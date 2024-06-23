@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thay thế</title>
+    <link rel="icon" href="/img/logo_ts.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <style>
+        #showMoreBtn {
+            background-color: lightcoral;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #showMoreBtn:hover {
+            background-color: #eb2f2d;
+        }
+
+        .dropdown-item.active,
+        .dropdown-item:active {
+            color: #fff;
+            text-decoration: none;
+            background-color: lightcoral !important;
+        }
+
+        .bg-light {
+            background-color: #F69C9B !important;
+            color: white !important;
+        }
+
+        .selected {
+            background-color: white;
+            color: #ff7477
+        }
+
+        .selected2 {
+            background-color: white;
+            color: #ff7477
+        }
+
+        input {
+            --s: 50px;
+            /* adjust this to control the size*/
+
+            height: calc(var(--s) + var(--s)/5);
+            width: auto;
+            /* some browsers need this */
+            aspect-ratio: 2.25;
+            border-radius: var(--s);
+            margin: calc(var(--s)/2);
+            display: grid;
+            cursor: pointer;
+            background-color: white;
+            box-sizing: content-box;
+            overflow: hidden;
+            transition: .3s .1s;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input:before {
+            content: "";
+            padding: calc(var(--s)/10);
+            --_g: radial-gradient(circle closest-side at calc(100% - var(--s)/2) 50%, #000 96%, #0000);
+            background:
+                var(--_g) 0 /var(--_p, var(--s)) 100% no-repeat content-box,
+                var(--_g) var(--_p, 0)/var(--s) 100% no-repeat content-box,
+                #fff;
+            mix-blend-mode: darken;
+            filter: blur(calc(var(--s)/12)) contrast(11);
+            transition: .4s, background-position .4s .1s,
+                padding cubic-bezier(0, calc(var(--_i, -1)*200), 1, calc(var(--_i, -1)*200)) .25s .1s;
+        }
+
+        input:checked {
+            background-color: #A31621;
+        }
+
+        input:checked:before {
+            padding: calc(var(--s)/10 + .05px) calc(var(--s)/10);
+            --_p: 100%;
+            --_i: 1;
+        }
+
+      
+
+        
+    </style>
+</head>
+
+<body>
+
+    <script>
+        if (!localStorage.getItem("isLoggedIn")) {
+
+            localStorage.setItem("redirectAfterLogin", "thay_the.html");
+
+            window.location.href = "login.html";
+        }
+
+    </script>
+
+    <nav class="navbar navbar-expand-lg" id="top">
+        <div class="container"> <a class="navbar-brand navbar-logo" href="../index.html"> <img style="width: 200px;
+                                                                                         height: 50px"
+                    src="images/logo.png" alt="logo" class="logo-1"> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
+                    class="fas fa-bars"></span> </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"> <a class="nav-link" href="../index.html">Trang chủ</a> </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Kỹ năng
+                        </a>
+                        <div class="dropdown-menu list_menu" aria-labelledby="skillDropdown">
+                            <!-- Thêm các mục con vào đây -->
+                            <a class="dropdown-item" href="morse.html">Morse</a>
+                            <hr>
+                            <a class="dropdown-item " href="semaphore.html">Semaphore</a>
+                            <hr>
+                            <a class="dropdown-item" href="gut_day.html">Gút dây</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mật thư
+                        </a>
+                        <div class="dropdown-menu list_menu" aria-labelledby="skillDropdown">
+                            <!-- Thêm các mục con vào đây -->
+                            <a class="dropdown-item" href="cam_ranh.html">Cam ranh</a>
+                            <hr>
+                            <a class="dropdown-item active" href="thay_the.html">Thay thế</a>
+
+                        </div>
+                    </li>
+                    <!--<li class="nav-item"> <a class="nav-link" href="@{/mat_thu}">Mật thư</a> </li>-->
+                    <li class="nav-item"> <a class="nav-link" href="about.html">Về CLB_TS</a> </li>
+
+
+                    <li class="nav-item"> <a class="nav-link" href="contact.html">Liên hệ</a> </li>
+                    <p th:text="${get}"></p>
+                    <li class="nav-item" id="logoutContainer">
+
+                        <button id="logoutButton" class="btn btn-primary customStyle-btn-primary " type="submit"></i>
+                            Đăng xuất </button>
+                    </li>
+
+                    <script>
+
+                        var _0x71b8 = ["\x69\x73\x4C\x6F\x67\x67\x65\x64\x49\x6E", "\x67\x65\x74\x49\x74\x65\x6D", "\x6C\x6F\x67\x6F\x75\x74\x43\x6F\x6E\x74\x61\x69\x6E\x65\x72", "\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64", "\x64\x69\x73\x70\x6C\x61\x79", "\x73\x74\x79\x6C\x65", "\x62\x6C\x6F\x63\x6B", "\x6E\x6F\x6E\x65"]; const isLoggedIn = localStorage[_0x71b8[1]](_0x71b8[0]); const logoutContainer = document[_0x71b8[3]](_0x71b8[2]); if (isLoggedIn) { logoutContainer[_0x71b8[5]][_0x71b8[4]] = _0x71b8[6] } else { logoutContainer[_0x71b8[5]][_0x71b8[4]] = _0x71b8[7] }
+                    </script>
+
+                    <script>
+
+                        var _0x19af = ["\x63\x6C\x69\x63\x6B", "\x69\x73\x4C\x6F\x67\x67\x65\x64\x49\x6E", "\x72\x65\x6D\x6F\x76\x65\x49\x74\x65\x6D", "\x68\x72\x65\x66", "\x6C\x6F\x63\x61\x74\x69\x6F\x6E", "\x2E\x2E\x2F\x69\x6E\x64\x65\x78\x2E\x68\x74\x6D\x6C", "\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72", "\x6C\x6F\x67\x6F\x75\x74\x42\x75\x74\x74\x6F\x6E", "\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64"]; document[_0x19af[8]](_0x19af[7])[_0x19af[6]](_0x19af[0], function () { localStorage[_0x19af[2]](_0x19af[1]); window[_0x19af[4]][_0x19af[3]] = _0x19af[5] })
+                    </script>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <span th:if="${message != null}">
+        
+        <div id="messageElement" style="display: none;">[[${message}]]</div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var messageElement = document.getElementById("messageElement");
+                var message = messageElement.textContent.trim(); 
+
+                Swal.fire({
+                    title: 'Yeah',
+                    text: message,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    </span> -->
+    <!-------Banner Start------->
+    <section class="banner" data-scroll-index='0'>
+        <div class="banner-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <div class="banner-text">
+                            <h3 style="text-transform: uppercase" class="white">Mật thư thay thế</h3>
+
+                            <!-- <h6  class="white"><i>Semaphore - Học cách sử dụng cử chỉ và tín hiệu đèn để truyền thông tin và giao tiếp một cách hiệu quả, giống như những người lính trên tàu chiến thời chiến tranh thế giới.</i></h6> -->
+
+                            <ul class="banner-text white" style="padding-bottom: 50px">
+                                <li><a href="#"><img src="../icon/icon_key.png" class="wow fadeInUp"
+                                            data-wow-delay="0.4s" /></a></li>
+                                <li><a href="#"><img src="../icon/icon_matthu.png" class="wow fadeInUp"
+                                            data-wow-delay="0.7s" /></a></li>
+                                <li><a href="#"><img src="../icon/icon_vanbanr.png" class="wow fadeInUp"
+                                            data-wow-delay="0.9s" /></a></li>
+                                            
+
+                            </ul>
+                            <script>
+                                $(document).ready(function () {
+                                    $('a[href^="#"]').on('click', function (e) {
+                                        e.preventDefault();
+
+                                        var target = this.hash;
+                                        var $target = $(target);
+
+                                        // Thời gian lướt mượt (milliseconds)
+                                        var scrollTime = 1000;
+
+                                        $('html, body').animate({
+                                            'scrollTop': $target.offset().top
+                                        }, scrollTime, 'swing');
+                                    });
+                                });
+                            </script>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12"> <img src="../img/logo_ts.png" class="img-fluid wow fadeInUp" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="svg-wave"> <img class="svg-hero" src="../images/applight-wave.svg"> </span>
+    </section>
+
+   
+
+
+    <section class="about section-padding prelative" data-scroll-index='1'>
+        <div class="container">
+            
+            <div class="row mx-auto">
+                
+
+                <div class="sectioner-header text-center">
+                    <h3>Mật thư thay thế</h3>
+                    <span class="line"></span>
+                    
+                    
+                </div>
+                
+
+
+                <div class="card customStyle-card-form">
+                    <div class="card-body">
+                        <h5 class="card-title customStyle-card-title-form"><i class="bi bi-person"></i>
+                            <div class="select">
+                                <select id="formSelector" onchange="toggleForms()">
+                                    <option value="1" selected="">Chữ thay chữ</option>
+                                    <option value="2">Chữ thay số</option>
+                                    <option value="3">Số thay chữ</option>
+                                    <option value="4">Chữ và số</option>
+                                </select>
+                            </div>
+
+                            
+                        </h5>
+
+                        <form id="form1" class="row g-3 needs-validation" onsubmit="validateForm()" name="contactForm">
+                            <div class="col-md-12">
+                                <label for="validationCustom03" class="form-label">Ký tự bắt đầu</label>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <td id="cellA" onclick="toggleCellColor(this)">A</td>
+                                                <td id="cellB" onclick="toggleCellColor(this)">B</td>
+                                                <td id="cellC" onclick="toggleCellColor(this)">C</td>
+                                                <td id="cellD" onclick="toggleCellColor(this)">D</td>
+                                                <td id="cellE" onclick="toggleCellColor(this)">E</td>
+                                                <td id="cellF" onclick="toggleCellColor(this)">F</td>
+                                                <td id="cellG" onclick="toggleCellColor(this)">G</td>
+                                                <td id="cellH" onclick="toggleCellColor(this)">H</td>
+                                                <td id="cellI" onclick="toggleCellColor(this)">I</td>
+                                                <td id="cellJ" onclick="toggleCellColor(this)">J</td>
+                                                <td id="cellK" onclick="toggleCellColor(this)">K</td>
+                                                <td id="cellL" onclick="toggleCellColor(this)">L</td>
+                                                <td id="cellM" onclick="toggleCellColor(this)">M</td>
+                                                <td id="cellN" onclick="toggleCellColor(this)">N</td>
+                                                <td id="cellO" onclick="toggleCellColor(this)">O</td>
+                                                <td id="cellP" onclick="toggleCellColor(this)">P</td>
+                                                <td id="cellQ" onclick="toggleCellColor(this)">Q</td>
+                                                <td id="cellR" onclick="toggleCellColor(this)">R</td>
+                                                <td id="cellS" onclick="toggleCellColor(this)">S</td>
+                                                <td id="cellT" onclick="toggleCellColor(this)">T</td>
+                                                <td id="cellU" onclick="toggleCellColor(this)">U</td>
+                                                <td id="cellV" onclick="toggleCellColor(this)">V</td>
+                                                <td id="cellW" onclick="toggleCellColor(this)">W</td>
+                                                <td id="cellX" onclick="toggleCellColor(this)">X</td>
+                                                <td id="cellY" onclick="toggleCellColor(this)">Y</td>
+                                                <td id="cellZ" onclick="toggleCellColor(this)">Z</td>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="validationCustom03" class="form-label">Ký tự kết thúc</label>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <td id="cellA" onclick="toggleCellColor1(this)">A</td>
+                                                <td id="cellB" onclick="toggleCellColor1(this)">B</td>
+                                                <td id="cellC" onclick="toggleCellColor1(this)">C</td>
+                                                <td id="cellD" onclick="toggleCellColor1(this)">D</td>
+                                                <td id="cellE" onclick="toggleCellColor1(this)">E</td>
+                                                <td id="cellF" onclick="toggleCellColor1(this)">F</td>
+                                                <td id="cellG" onclick="toggleCellColor1(this)">G</td>
+                                                <td id="cellH" onclick="toggleCellColor1(this)">H</td>
+                                                <td id="cellI" onclick="toggleCellColor1(this)">I</td>
+                                                <td id="cellJ" onclick="toggleCellColor1(this)">J</td>
+                                                <td id="cellK" onclick="toggleCellColor1(this)">K</td>
+                                                <td id="cellL" onclick="toggleCellColor1(this)">L</td>
+                                                <td id="cellM" onclick="toggleCellColor1(this)">M</td>
+                                                <td id="cellN" onclick="toggleCellColor1(this)">N</td>
+                                                <td id="cellO" onclick="toggleCellColor1(this)">O</td>
+                                                <td id="cellP" onclick="toggleCellColor1(this)">P</td>
+                                                <td id="cellQ" onclick="toggleCellColor1(this)">Q</td>
+                                                <td id="cellR" onclick="toggleCellColor1(this)">R</td>
+                                                <td id="cellS" onclick="toggleCellColor1(this)">S</td>
+                                                <td id="cellT" onclick="toggleCellColor1(this)">T</td>
+                                                <td id="cellU" onclick="toggleCellColor1(this)">U</td>
+                                                <td id="cellV" onclick="toggleCellColor1(this)">V</td>
+                                                <td id="cellW" onclick="toggleCellColor1(this)">W</td>
+                                                <td id="cellX" onclick="toggleCellColor1(this)">X</td>
+                                                <td id="cellY" onclick="toggleCellColor1(this)">Y</td>
+                                                <td id="cellZ" onclick="toggleCellColor1(this)">Z</td>
+
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <label for="validationCustom03" class="form-label">Nhập bạch văn</label>
+                                <textarea type="text" id="bachvan" name="bachvan" class="form-control" required
+                                    autocomplete="off"></textarea>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="validationCustom03" class="form-label">Mã hóa chiều thuận</label>
+                                <textarea id="maHoachieuThuan" class="form-control" required readonly></textarea>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="validationCustom03" class="form-label">Mã hóa chiều nghịch</label>
+                                <textarea id="maHoachieuNghich" type="text" class="form-control" required readonly
+                                    autocomplete="off"></textarea>
+                            </div>
+
+                            <!--                                    <div class="col-12">
+                                                                    <button class="btn btn-primary customStyle-btn-primary" type="submit" ><i class="bi bi-send-fill"></i> Send </button>
+                                                                </div>-->
+
+                        </form>
+
+                        <form id="form2" class="row g-3 needs-validation" onsubmit="validateForm()" name="contactForm"
+                            style="display: none;">
+                            
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Ký tự bắt đầu</label>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <td id="cellA" onclick="toggleCellColorForm2(this)">A</td>
+                                                    <td id="cellB" onclick="toggleCellColorForm2(this)">B</td>
+                                                    <td id="cellC" onclick="toggleCellColorForm2(this)">C</td>
+                                                    <td id="cellD" onclick="toggleCellColorForm2(this)">D</td>
+                                                    <td id="cellE" onclick="toggleCellColorForm2(this)">E</td>
+                                                    <td id="cellF" onclick="toggleCellColorForm2(this)">F</td>
+                                                    <td id="cellG" onclick="toggleCellColorForm2(this)">G</td>
+                                                    <td id="cellH" onclick="toggleCellColorForm2(this)">H</td>
+                                                    <td id="cellI" onclick="toggleCellColorForm2(this)">I</td>
+                                                    <td id="cellJ" onclick="toggleCellColorForm2(this)">J</td>
+                                                    <td id="cellK" onclick="toggleCellColorForm2(this)">K</td>
+                                                    <td id="cellL" onclick="toggleCellColorForm2(this)">L</td>
+                                                    <td id="cellM" onclick="toggleCellColorForm2(this)">M</td>
+                                                    <td id="cellN" onclick="toggleCellColorForm2(this)">N</td>
+                                                    <td id="cellO" onclick="toggleCellColorForm2(this)">O</td>
+                                                    <td id="cellP" onclick="toggleCellColorForm2(this)">P</td>
+                                                    <td id="cellQ" onclick="toggleCellColorForm2(this)">Q</td>
+                                                    <td id="cellR" onclick="toggleCellColorForm2(this)">R</td>
+                                                    <td id="cellS" onclick="toggleCellColorForm2(this)">S</td>
+                                                    <td id="cellT" onclick="toggleCellColorForm2(this)">T</td>
+                                                    <td id="cellU" onclick="toggleCellColorForm2(this)">U</td>
+                                                    <td id="cellV" onclick="toggleCellColorForm2(this)">V</td>
+                                                    <td id="cellW" onclick="toggleCellColorForm2(this)">W</td>
+                                                    <td id="cellX" onclick="toggleCellColorForm2(this)">X</td>
+                                                    <td id="cellY" onclick="toggleCellColorForm2(this)">Y</td>
+                                                    <td id="cellZ" onclick="toggleCellColorForm2(this)">Z</td>
+                                                </tr>
+                                            </thead>
+
+
+
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Ký tự kết thúc</label>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <td id="cell1" onclick="toggleCellColorForm21(this)">1</td>
+                                                    <td id="cell2" onclick="toggleCellColorForm21(this)">2</td>
+                                                    <td id="cell3" onclick="toggleCellColorForm21(this)">3</td>
+                                                    <td id="cell4" onclick="toggleCellColorForm21(this)">4</td>
+                                                    <td id="cell5" onclick="toggleCellColorForm21(this)">5</td>
+                                                    <td id="cell6" onclick="toggleCellColorForm21(this)">6</td>
+                                                    <td id="cell7" onclick="toggleCellColorForm21(this)">7</td>
+                                                    <td id="cell8" onclick="toggleCellColorForm21(this)">8</td>
+                                                    <td id="cell9" onclick="toggleCellColorForm21(this)">9</td>
+                                                    <td id="cell10" onclick="toggleCellColorForm21(this)">10</td>
+                                                    <td id="cell11" onclick="toggleCellColorForm21(this)">11</td>
+                                                    <td id="cell12" onclick="toggleCellColorForm21(this)">12</td>
+                                                    <td id="cell13" onclick="toggleCellColorForm21(this)">13</td>
+                                                    <td id="cell14" onclick="toggleCellColorForm21(this)">14</td>
+                                                    <td id="cell15" onclick="toggleCellColorForm21(this)">15</td>
+                                                    <td id="cell16" onclick="toggleCellColorForm21(this)">16</td>
+                                                    <td id="cell17" onclick="toggleCellColorForm21(this)">17</td>
+                                                    <td id="cell18" onclick="toggleCellColorForm21(this)">18</td>
+                                                    <td id="cell19" onclick="toggleCellColorForm21(this)">19</td>
+                                                    <td id="cell20" onclick="toggleCellColorForm21(this)">20</td>
+                                                    <td id="cell21" onclick="toggleCellColorForm21(this)">21</td>
+                                                    <td id="cell22" onclick="toggleCellColorForm21(this)">22</td>
+                                                    <td id="cell23" onclick="toggleCellColorForm21(this)">23</td>
+                                                    <td id="cell24" onclick="toggleCellColorForm21(this)">24</td>
+                                                    <td id="cell25" onclick="toggleCellColorForm21(this)">25</td>
+                                                    <td id="cell26" onclick="toggleCellColorForm21(this)">26</td>
+
+                                                </tr>
+                                            </thead>
+
+
+
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Chữ</label>
+                                    <textarea type="text" id="bachvan1" name="bachvan" class="form-control"
+                                        autocomplete="off"></textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Số</label>
+                                    <textarea  id="maHoachieuThuan1"
+                                        class="form-control" readonly></textarea>
+                                </div>
+
+                            
+
+                            
+
+                            
+                        </form>
+
+
+
+
+
+                        <form id="form3" class="row g-3 needs-validation" onsubmit="validateForm()" name="contactForm"
+                            style="display: none;">
+                            
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Ký tự bắt đầu</label>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <td id="cellA" onclick="toggleCellColorForm2_1(this)">A</td>
+                                                    <td id="cellB" onclick="toggleCellColorForm2_1(this)">B</td>
+                                                    <td id="cellC" onclick="toggleCellColorForm2_1(this)">C</td>
+                                                    <td id="cellD" onclick="toggleCellColorForm2_1(this)">D</td>
+                                                    <td id="cellE" onclick="toggleCellColorForm2_1(this)">E</td>
+                                                    <td id="cellF" onclick="toggleCellColorForm2_1(this)">F</td>
+                                                    <td id="cellG" onclick="toggleCellColorForm2_1(this)">G</td>
+                                                    <td id="cellH" onclick="toggleCellColorForm2_1(this)">H</td>
+                                                    <td id="cellI" onclick="toggleCellColorForm2_1(this)">I</td>
+                                                    <td id="cellJ" onclick="toggleCellColorForm2_1(this)">J</td>
+                                                    <td id="cellK" onclick="toggleCellColorForm2_1(this)">K</td>
+                                                    <td id="cellL" onclick="toggleCellColorForm2_1(this)">L</td>
+                                                    <td id="cellM" onclick="toggleCellColorForm2_1(this)">M</td>
+                                                    <td id="cellN" onclick="toggleCellColorForm2_1(this)">N</td>
+                                                    <td id="cellO" onclick="toggleCellColorForm2_1(this)">O</td>
+                                                    <td id="cellP" onclick="toggleCellColorForm2_1(this)">P</td>
+                                                    <td id="cellQ" onclick="toggleCellColorForm2_1(this)">Q</td>
+                                                    <td id="cellR" onclick="toggleCellColorForm2_1(this)">R</td>
+                                                    <td id="cellS" onclick="toggleCellColorForm2_1(this)">S</td>
+                                                    <td id="cellT" onclick="toggleCellColorForm2_1(this)">T</td>
+                                                    <td id="cellU" onclick="toggleCellColorForm2_1(this)">U</td>
+                                                    <td id="cellV" onclick="toggleCellColorForm2_1(this)">V</td>
+                                                    <td id="cellW" onclick="toggleCellColorForm2_1(this)">W</td>
+                                                    <td id="cellX" onclick="toggleCellColorForm2_1(this)">X</td>
+                                                    <td id="cellY" onclick="toggleCellColorForm2_1(this)">Y</td>
+                                                    <td id="cellZ" onclick="toggleCellColorForm2_1(this)">Z</td>
+                                                </tr>
+                                            </thead>
+
+
+
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Ký tự kết thúc</label>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <td id="cell1" onclick="toggleCellColorForm21_1(this)">1</td>
+                                                    <td id="cell2" onclick="toggleCellColorForm21_1(this)">2</td>
+                                                    <td id="cell3" onclick="toggleCellColorForm21_1(this)">3</td>
+                                                    <td id="cell4" onclick="toggleCellColorForm21_1(this)">4</td>
+                                                    <td id="cell5" onclick="toggleCellColorForm21_1(this)">5</td>
+                                                    <td id="cell6" onclick="toggleCellColorForm21_1(this)">6</td>
+                                                    <td id="cell7" onclick="toggleCellColorForm21_1(this)">7</td>
+                                                    <td id="cell8" onclick="toggleCellColorForm21_1(this)">8</td>
+                                                    <td id="cell9" onclick="toggleCellColorForm21_1(this)">9</td>
+                                                    <td id="cell10" onclick="toggleCellColorForm21_1(this)">10</td>
+                                                    <td id="cell11" onclick="toggleCellColorForm21_1(this)">11</td>
+                                                    <td id="cell12" onclick="toggleCellColorForm21_1(this)">12</td>
+                                                    <td id="cell13" onclick="toggleCellColorForm21_1(this)">13</td>
+                                                    <td id="cell14" onclick="toggleCellColorForm21_1(this)">14</td>
+                                                    <td id="cell15" onclick="toggleCellColorForm21_1(this)">15</td>
+                                                    <td id="cell16" onclick="toggleCellColorForm21_1(this)">16</td>
+                                                    <td id="cell17" onclick="toggleCellColorForm21_1(this)">17</td>
+                                                    <td id="cell18" onclick="toggleCellColorForm21_1(this)">18</td>
+                                                    <td id="cell19" onclick="toggleCellColorForm21_1(this)">19</td>
+                                                    <td id="cell20" onclick="toggleCellColorForm21_1(this)">20</td>
+                                                    <td id="cell21" onclick="toggleCellColorForm21_1(this)">21</td>
+                                                    <td id="cell22" onclick="toggleCellColorForm21_1(this)">22</td>
+                                                    <td id="cell23" onclick="toggleCellColorForm21_1(this)">23</td>
+                                                    <td id="cell24" onclick="toggleCellColorForm21_1(this)">24</td>
+                                                    <td id="cell25" onclick="toggleCellColorForm21_1(this)">25</td>
+                                                    <td id="cell26" onclick="toggleCellColorForm21_1(this)">26</td>
+
+                                                </tr>
+                                            </thead>
+
+
+
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Số</label>
+                                    <textarea type="text" id="bachvan12" name="bachvan" class="form-control"
+                                        autocomplete="off"></textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Chữ</label>
+                                    <textarea  id="maHoachieuThuan12"
+                                        class="form-control" readonly></textarea>
+                                </div>
+
+                            
+
+                            
+
+                            
+                        </form>
+
+                        <form id="form4" class="row g-3 needs-validation" onsubmit="validateForm()" name="contactForm"
+                            style="display: none;">
+
+                            <div class="col-md-12">
+                                <label for="validationCustom03" class="form-label">Ký tự 1</label>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <td id="cellA" onclick="toggleCellColor4(this)">A</td>
+                                                <td id="cellB" onclick="toggleCellColor4(this)">B</td>
+                                                <td id="cellC" onclick="toggleCellColor4(this)">C</td>
+                                                <td id="cellD" onclick="toggleCellColor4(this)">D</td>
+                                                <td id="cellE" onclick="toggleCellColor4(this)">E</td>
+                                                <td id="cellF" onclick="toggleCellColor4(this)">F</td>
+                                                <td id="cellG" onclick="toggleCellColor4(this)">G</td>
+                                                <td id="cellH" onclick="toggleCellColor4(this)">H</td>
+                                                <td id="cellI" onclick="toggleCellColor4(this)">I</td>
+                                                <td id="cellJ" onclick="toggleCellColor4(this)">J</td>
+                                                <td id="cellK" onclick="toggleCellColor4(this)">K</td>
+                                                <td id="cellL" onclick="toggleCellColor4(this)">L</td>
+                                                <td id="cellM" onclick="toggleCellColor4(this)">M</td>
+                                                <td id="cellN" onclick="toggleCellColor4(this)">N</td>
+                                                <td id="cellO" onclick="toggleCellColor4(this)">O</td>
+                                                <td id="cellP" onclick="toggleCellColor4(this)">P</td>
+                                                <td id="cellQ" onclick="toggleCellColor4(this)">Q</td>
+                                                <td id="cellR" onclick="toggleCellColor4(this)">R</td>
+                                                <td id="cellS" onclick="toggleCellColor4(this)">S</td>
+                                                <td id="cellT" onclick="toggleCellColor4(this)">T</td>
+                                                <td id="cellU" onclick="toggleCellColor4(this)">U</td>
+                                                <td id="cellV" onclick="toggleCellColor4(this)">V</td>
+                                                <td id="cellW" onclick="toggleCellColor4(this)">W</td>
+                                                <td id="cellX" onclick="toggleCellColor4(this)">X</td>
+                                                <td id="cellY" onclick="toggleCellColor4(this)">Y</td>
+                                                <td id="cellZ" onclick="toggleCellColor4(this)">Z</td>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="validationCustom03" class="form-label">Ký tự 2</label>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <td id="cellA" onclick="toggleCellColor4_1(this)">A</td>
+                                                <td id="cellB" onclick="toggleCellColor4_1(this)">B</td>
+                                                <td id="cellC" onclick="toggleCellColor4_1(this)">C</td>
+                                                <td id="cellD" onclick="toggleCellColor4_1(this)">D</td>
+                                                <td id="cellE" onclick="toggleCellColor4_1(this)">E</td>
+                                                <td id="cellF" onclick="toggleCellColor4_1(this)">F</td>
+                                                <td id="cellG" onclick="toggleCellColor4_1(this)">G</td>
+                                                <td id="cellH" onclick="toggleCellColor4_1(this)">H</td>
+                                                <td id="cellI" onclick="toggleCellColor4_1(this)">I</td>
+                                                <td id="cellJ" onclick="toggleCellColor4_1(this)">J</td>
+                                                <td id="cellK" onclick="toggleCellColor4_1(this)">K</td>
+                                                <td id="cellL" onclick="toggleCellColor4_1(this)">L</td>
+                                                <td id="cellM" onclick="toggleCellColor4_1(this)">M</td>
+                                                <td id="cellN" onclick="toggleCellColor4_1(this)">N</td>
+                                                <td id="cellO" onclick="toggleCellColor4_1(this)">O</td>
+                                                <td id="cellP" onclick="toggleCellColor4_1(this)">P</td>
+                                                <td id="cellQ" onclick="toggleCellColor4_1(this)">Q</td>
+                                                <td id="cellR" onclick="toggleCellColor4_1(this)">R</td>
+                                                <td id="cellS" onclick="toggleCellColor4_1(this)">S</td>
+                                                <td id="cellT" onclick="toggleCellColor4_1(this)">T</td>
+                                                <td id="cellU" onclick="toggleCellColor4_1(this)">U</td>
+                                                <td id="cellV" onclick="toggleCellColor4_1(this)">V</td>
+                                                <td id="cellW" onclick="toggleCellColor4_1(this)">W</td>
+                                                <td id="cellX" onclick="toggleCellColor4_1(this)">X</td>
+                                                <td id="cellY" onclick="toggleCellColor4_1(this)">Y</td>
+                                                <td id="cellZ" onclick="toggleCellColor4_1(this)">Z</td>
+
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+                            </div>
+                            
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Ký tự 3</label>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <td id="cellA" onclick="toggleCellColorForm4_2(this)">A</td>
+                                                    <td id="cellB" onclick="toggleCellColorForm4_2(this)">B</td>
+                                                    <td id="cellC" onclick="toggleCellColorForm4_2(this)">C</td>
+                                                    <td id="cellD" onclick="toggleCellColorForm4_2(this)">D</td>
+                                                    <td id="cellE" onclick="toggleCellColorForm4_2(this)">E</td>
+                                                    <td id="cellF" onclick="toggleCellColorForm4_2(this)">F</td>
+                                                    <td id="cellG" onclick="toggleCellColorForm4_2(this)">G</td>
+                                                    <td id="cellH" onclick="toggleCellColorForm4_2(this)">H</td>
+                                                    <td id="cellI" onclick="toggleCellColorForm4_2(this)">I</td>
+                                                    <td id="cellJ" onclick="toggleCellColorForm4_2(this)">J</td>
+                                                    <td id="cellK" onclick="toggleCellColorForm4_2(this)">K</td>
+                                                    <td id="cellL" onclick="toggleCellColorForm4_2(this)">L</td>
+                                                    <td id="cellM" onclick="toggleCellColorForm4_2(this)">M</td>
+                                                    <td id="cellN" onclick="toggleCellColorForm4_2(this)">N</td>
+                                                    <td id="cellO" onclick="toggleCellColorForm4_2(this)">O</td>
+                                                    <td id="cellP" onclick="toggleCellColorForm4_2(this)">P</td>
+                                                    <td id="cellQ" onclick="toggleCellColorForm4_2(this)">Q</td>
+                                                    <td id="cellR" onclick="toggleCellColorForm4_2(this)">R</td>
+                                                    <td id="cellS" onclick="toggleCellColorForm4_2(this)">S</td>
+                                                    <td id="cellT" onclick="toggleCellColorForm4_2(this)">T</td>
+                                                    <td id="cellU" onclick="toggleCellColorForm4_2(this)">U</td>
+                                                    <td id="cellV" onclick="toggleCellColorForm4_2(this)">V</td>
+                                                    <td id="cellW" onclick="toggleCellColorForm4_2(this)">W</td>
+                                                    <td id="cellX" onclick="toggleCellColorForm4_2(this)">X</td>
+                                                    <td id="cellY" onclick="toggleCellColorForm4_2(this)">Y</td>
+                                                    <td id="cellZ" onclick="toggleCellColorForm4_2(this)">Z</td>
+                                                </tr>
+                                            </thead>
+
+
+
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Số</label>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <td id="cell1" onclick="toggleCellColorForm4_3(this)">1</td>
+                                                    <td id="cell2" onclick="toggleCellColorForm4_3(this)">2</td>
+                                                    <td id="cell3" onclick="toggleCellColorForm4_3(this)">3</td>
+                                                    <td id="cell4" onclick="toggleCellColorForm4_3(this)">4</td>
+                                                    <td id="cell5" onclick="toggleCellColorForm4_3(this)">5</td>
+                                                    <td id="cell6" onclick="toggleCellColorForm4_3(this)">6</td>
+                                                    <td id="cell7" onclick="toggleCellColorForm4_3(this)">7</td>
+                                                    <td id="cell8" onclick="toggleCellColorForm4_3(this)">8</td>
+                                                    <td id="cell9" onclick="toggleCellColorForm4_3(this)">9</td>
+                                                    <td id="cell10" onclick="toggleCellColorForm4_3(this)">10</td>
+                                                    <td id="cell11" onclick="toggleCellColorForm4_3(this)">11</td>
+                                                    <td id="cell12" onclick="toggleCellColorForm4_3(this)">12</td>
+                                                    <td id="cell13" onclick="toggleCellColorForm4_3(this)">13</td>
+                                                    <td id="cell14" onclick="toggleCellColorForm4_3(this)">14</td>
+                                                    <td id="cell15" onclick="toggleCellColorForm4_3(this)">15</td>
+                                                    <td id="cell16" onclick="toggleCellColorForm4_3(this)">16</td>
+                                                    <td id="cell17" onclick="toggleCellColorForm4_3(this)">17</td>
+                                                    <td id="cell18" onclick="toggleCellColorForm4_3(this)">18</td>
+                                                    <td id="cell19" onclick="toggleCellColorForm4_3(this)">19</td>
+                                                    <td id="cell20" onclick="toggleCellColorForm4_3(this)">20</td>
+                                                    <td id="cell21" onclick="toggleCellColorForm4_3(this)">21</td>
+                                                    <td id="cell22" onclick="toggleCellColorForm4_3(this)">22</td>
+                                                    <td id="cell23" onclick="toggleCellColorForm4_3(this)">23</td>
+                                                    <td id="cell24" onclick="toggleCellColorForm4_3(this)">24</td>
+                                                    <td id="cell25" onclick="toggleCellColorForm4_3(this)">25</td>
+                                                    <td id="cell26" onclick="toggleCellColorForm4_3(this)">26</td>
+
+                                                </tr>
+                                            </thead>
+
+
+
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Bạch văn</label>
+                                    <textarea type="text" id="bachvan4" name="bachvan" class="form-control"
+                                        autocomplete="off"></textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Trường hợp 1</label>
+                                    <textarea  id="maHoachieuThuan4"
+                                        class="form-control" readonly></textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Trường hợp 2</label>
+                                    <textarea  id="maHoachieuThuan4_2"
+                                        class="form-control" readonly></textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Trường hợp 3</label>
+                                    <textarea  id="maHoachieuThuan4_3"
+                                        class="form-control" readonly></textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Trường hợp 4</label>
+                                    <textarea  id="maHoachieuThuan4_4"
+                                        class="form-control" readonly></textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Trường hợp 5</label>
+                                    <textarea  id="maHoachieuThuan4_5"
+                                        class="form-control" readonly></textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="validationCustom03" class="form-label">Trường hợp 6</label>
+                                    <textarea  id="maHoachieuThuan4_6"
+                                        class="form-control" readonly></textarea>
+                                </div>
+
+                            
+
+                            
+
+                            
+                        </form>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- content -->
+    <section class="download section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectioner-header text-center white">
+                        <img style="width: 200px;
+                                                                            height: 50px" src="../images/logo.png"
+                            alt="logo" class="logo-1">
+                        <span class="line"></span>
+                        <p class="white">Sống với đam mê - Cháy cùng nhiệt huyết</p>
+                        <p class="white">Thắp sáng cho tôi - Thắp sáng cho bạn</p>
+                        <p class="white">Và niềm tin thắp sáng Việt Nam</p>
+
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="section-content text-center">
+                        <img src="../img/logo_ts.png" class="img-fluid wow fadeInUp" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-------Download End------->
+
+    <footer class="footer-copy">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>2023 &copy; Applight. Website Designed by <span style="color: red"> Thắp Sáng</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--<div class="loader"></div>-->
+
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "140429645814710");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v18.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <!-- scrollIt js -->
+    <script src="../js/scrollIt.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/thay_the.js"></script>
+
+    <script>
+        function toggleForms() {
+            var selector = document.getElementById("formSelector");
+            var form1 = document.getElementById("form1");
+            var form2 = document.getElementById("form2");
+            var form3 = document.getElementById("form3");
+            var form4 = document.getElementById("form4");
+
+
+            // Get the selected option value
+            var selectedOption = parseInt(selector.value);
+
+            // Hide all forms by default
+            form1.style.display = "none";
+            form2.style.display = "none";
+            form3.style.display = "none";
+            form4.style.display = "none";
+
+            // Show the selected form based on the option value
+            if (selectedOption === 1) {
+                form1.style.display = "block";
+            } else if (selectedOption === 2) {
+                form2.style.display = "block";
+            } else if (selectedOption === 3) {
+                form3.style.display = "block";
+            }
+            else if (selectedOption === 4) {
+                form4.style.display = "block";
+            }
+        }
+
+// Initially call the function to set the default display
+        toggleForms();
+    </script>
+
+
+    <script>
+        wow = new WOW();
+        wow.init();
+        $(document).ready(function (e) {
+
+            $('#video-icon').on('click', function (e) {
+                e.preventDefault();
+                $('.video-popup').css('display', 'flex');
+                $('.iframe-src').slideDown();
+            });
+            $('.video-popup').on('click', function (e) {
+                var $target = e.target.nodeName;
+                var video_src = $(this).find('iframe').attr('src');
+                if ($target != 'IFRAME') {
+                    $('.video-popup').fadeOut();
+                    $('.iframe-src').slideUp();
+                    $('.video-popup iframe').attr('src', " ");
+                    $('.video-popup iframe').attr('src', video_src);
+                }
+            });
+
+            $('.slider').bxSlider({
+                pager: false
+            });
+        });
+
+        $(window).on("scroll", function () {
+
+            var bodyScroll = $(window).scrollTop(),
+                navbar = $(".navbar");
+
+            if (bodyScroll > 50) {
+                $('.navbar-logo img').attr('src', '/images/logo-black.png');
+                navbar.addClass("nav-scroll");
+
+            } else {
+                $('.navbar-logo img').attr('src', '/images/logo.png');
+                navbar.removeClass("nav-scroll");
+            }
+
+        });
+        $(window).on("load", function () {
+            var bodyScroll = $(window).scrollTop(),
+                navbar = $(".navbar");
+
+            if (bodyScroll > 50) {
+                $('.navbar-logo img').attr('src', '/images/logo-black.png');
+                navbar.addClass("nav-scroll");
+            } else {
+                $('.navbar-logo img').attr('src', '/images/logo-white.png');
+                navbar.removeClass("nav-scroll");
+            }
+
+            $.scrollIt({
+
+                easing: 'swing', // the easing function for animation
+                scrollTime: 900, // how long (in ms) the animation takes
+                activeClass: 'active', // class given to the active nav element
+                onPageChange: null, // function(pageIndex) that is called when page is changed
+                topOffset: -63
+            });
+        });
+
+    </script>
+</body>
+
+</html>

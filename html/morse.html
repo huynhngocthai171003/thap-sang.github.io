@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse</title>
+    <link rel="icon" href="/img/logo_ts.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <style>
+        #showMoreBtn {
+            background-color: lightcoral;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #showMoreBtn:hover {
+            background-color: #eb2f2d;
+        }
+
+        .dropdown-item.active,
+        .dropdown-item:active {
+            color: #fff;
+            text-decoration: none;
+            background-color: lightcoral !important;
+        }
+
+        .bg-light {
+            background-color: #F69C9B !important;
+            color: white !important;
+        }
+
+        input[type=range] {
+            height: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg" id="top">
+        <div class="container"> <a class="navbar-brand navbar-logo" href="../index.html"> <img style="width: 200px;
+                                                                                         height: 50px"
+                    src="images/logo.png" alt="logo" class="logo-1"> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
+                    class="fas fa-bars"></span> </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"> <a class="nav-link" href="../index.html">Trang chủ</a> </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Kỹ năng
+                        </a>
+                        <div class="dropdown-menu list_menu" aria-labelledby="skillDropdown">
+                            <!-- Thêm các mục con vào đây -->
+                            <a class="dropdown-item active" href="morse.html">Morse</a>
+                            <hr>
+                            <a class="dropdown-item " href="semaphore.html">Semaphore</a>
+                            <hr>
+                            <a class="dropdown-item" href="gut_day.html">Gút dây</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mật thư
+                        </a>
+                        <div class="dropdown-menu list_menu" aria-labelledby="skillDropdown">
+                            <!-- Thêm các mục con vào đây -->
+                            <a class="dropdown-item" href="cam_ranh.html">Cam ranh</a>
+                            <hr>
+                            <a class="dropdown-item" href="thay_the.html">Thay thế</a>
+
+                        </div>
+                    </li>
+                    <!--<li class="nav-item"> <a class="nav-link" href="@{/mat_thu}">Mật thư</a> </li>-->
+                    <li class="nav-item"> <a class="nav-link" href="about.html">Về CLB_TS</a> </li>
+
+
+                    <li class="nav-item"> <a class="nav-link" href="contact.html">Liên hệ</a> </li>
+                    <p th:text="${get}"></p>
+                    <li class="nav-item" id="logoutContainer">
+
+                        <button id="logoutButton" class="btn btn-primary customStyle-btn-primary " type="submit"></i>
+                            Đăng xuất </button>
+                    </li>
+
+                    <script>
+
+                        var _0x71b8 = ["\x69\x73\x4C\x6F\x67\x67\x65\x64\x49\x6E", "\x67\x65\x74\x49\x74\x65\x6D", "\x6C\x6F\x67\x6F\x75\x74\x43\x6F\x6E\x74\x61\x69\x6E\x65\x72", "\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64", "\x64\x69\x73\x70\x6C\x61\x79", "\x73\x74\x79\x6C\x65", "\x62\x6C\x6F\x63\x6B", "\x6E\x6F\x6E\x65"]; const isLoggedIn = localStorage[_0x71b8[1]](_0x71b8[0]); const logoutContainer = document[_0x71b8[3]](_0x71b8[2]); if (isLoggedIn) { logoutContainer[_0x71b8[5]][_0x71b8[4]] = _0x71b8[6] } else { logoutContainer[_0x71b8[5]][_0x71b8[4]] = _0x71b8[7] }
+                    </script>
+
+                    <script>
+
+                        var _0x19af = ["\x63\x6C\x69\x63\x6B", "\x69\x73\x4C\x6F\x67\x67\x65\x64\x49\x6E", "\x72\x65\x6D\x6F\x76\x65\x49\x74\x65\x6D", "\x68\x72\x65\x66", "\x6C\x6F\x63\x61\x74\x69\x6F\x6E", "\x2E\x2E\x2F\x69\x6E\x64\x65\x78\x2E\x68\x74\x6D\x6C", "\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72", "\x6C\x6F\x67\x6F\x75\x74\x42\x75\x74\x74\x6F\x6E", "\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64"]; document[_0x19af[8]](_0x19af[7])[_0x19af[6]](_0x19af[0], function () { localStorage[_0x19af[2]](_0x19af[1]); window[_0x19af[4]][_0x19af[3]] = _0x19af[5] })
+                    </script>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-------Banner Start------->
+    <section class="banner" data-scroll-index='0'>
+        <div class="banner-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <div class="banner-text">
+                            <h3 style="text-transform: uppercase" class="white">Bảng MORSE</h3>
+
+                            <h6 class="white"><i>Morse - Khám phá thế giới của ngôn ngữ Morse, hệ thống truyền thông
+                                    bằng âm thanh và ánh sáng, và làm quen với việc gửi và nhận các thông điệp bằng mã
+                                    Morse.</i></h6>
+
+                            <ul class="banner-text white" style="padding-bottom: 50px">
+                                <li><a href="#about-section"><img src="../images/samuel_morse.png" class="wow fadeInUp"
+                                            data-wow-delay="0.4s" /></a></li>
+                                <li><a href="#"><img src="../images/ken_morse.png" class="wow fadeInUp"
+                                            data-wow-delay="0.7s" /></a></li>
+                                <li><a href="#morse"><img src="../images/morse.png" class="wow fadeInUp"
+                                            data-wow-delay="0.9s" /></a></li>
+
+                            </ul>
+                            <script>
+                                $(document).ready(function () {
+                                    $('a[href^="#"]').on('click', function (e) {
+                                        e.preventDefault();
+
+                                        var target = this.hash;
+                                        var $target = $(target);
+
+                                        // Thời gian lướt mượt (milliseconds)
+                                        var scrollTime = 1000;
+
+                                        $('html, body').animate({
+                                            'scrollTop': $target.offset().top
+                                        }, scrollTime, 'swing');
+                                    });
+                                });
+                            </script>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12"> <img src="../img/logo_ts.png" class="img-fluid wow fadeInUp" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="svg-wave"> <img class="svg-hero" src="../images/applight-wave.svg"> </span>
+    </section>
+
+    <!-- content -->
+
+    <div id="about-section" class="container" style="margin-top: 48px ;margin-bottom: 48px ">
+        <div class="row">
+            <div style="margin-bottom:40px " class="sectioner-header text-center">
+                <h3>Tiểu Sử</h3>
+                <span class="line"></span>
+
+            </div>
+            <div class="col-lg-5 col-md-6">
+                <div class="mb-2">
+                    <img class="w-100" style="width: 445px; height: 500px" src="/images/img_morse.png" alt="">
+                </div>
+                <div class="mb-2 d-flex">
+                    <h4 class="font-weight-normal">Samuel Morse</h4>
+                    <!--                            <div class="social d-flex ml-auto">
+                                                    <p class="pr-2 font-weight-normal">Follow on:</p>
+                                                    <a href="#" class="text-muted mr-1">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                    <a href="#" class="text-muted mr-1">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                    <a href="#" class="text-muted mr-1">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                    <a href="#" class="text-muted">
+                                                        <i class="fab fa-linkedin"></i>
+                                                    </a>
+                                                </div>-->
+                </div>
+                <div class="mb-2">
+                    <ul class="list-unstyled">
+                        <li class="media">
+                            <span class="w-25 text-black font-weight-normal">Nghề:</span>
+                            <label class="media-body">Họa sĩ</label>
+                        </li>
+                        <li class="media">
+                            <span class="w-25 text-black font-weight-normal">Sinh: </span>
+                            <label class="media-body">27/04/1791</label>
+                        </li>
+                        <li class="media">
+                            <span class="w-25 text-black font-weight-normal">Mất: </span>
+                            <label class="media-body">02/04/1872 (80 tuổi)</label>
+                        </li>
+                        <li class="media">
+                            <span class="w-25 text-black font-weight-normal">Được biết đến: </span>
+                            <label class="media-body">Sự phát minh và truyền mã Morse</label>
+                        </li>
+                        <!--                                <li class="media">
+                                                            <span class="w-25 text-black font-weight-normal">Location: </span>
+                                                            <label class="media-body">5557 Cottey St Fort Worth, Texas(TX), 76119, New York, USA</label>
+                                                        </li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-6 pl-xl-3">
+                <h5 class="font-weight-normal">Samuel Finley Breese Morse</h5>
+                <p>Samuel Finley Breese Morse (1791-1872) là một họa sĩ và nhà phát minh người Mỹ nổi tiếng, được biết
+                    đến chủ yếu với sáng chế hệ thống truyền tin từ xa bằng mã Morse, còn được gọi là Morse Code. Dưới
+                    đây là một số thông tin về tiểu sử của ông và sáng chế quan trọng của ông:
+                </p>
+                <div class="my-2 bg-light p-2">
+                    <p class="font-italic mb-0">Thời niên thiếu và Học vấn:</p>
+                </div>
+                <ul class="list list-unstyled mb-3">
+                    <li class="text-secondary font-weight-normal mb-1">
+                        <span class="ti-arrow-right pr-1 text-primary"></span>
+                        Samuel Morse sinh ngày 27 tháng 4 năm 1791 tại Charlestown, Massachusetts, Hoa Kỳ. Ông là con
+                        trai của mục sư Jedidiah Morse và có một nền giáo dục vững vàng từ cha mình. Samuel Morse theo
+                        học tại Phillips Academy và sau đó vào Yale College, nơi ông nghiên cứu triết học tôn giáo, toán
+                        học và khoa học.
+                    </li>
+
+                </ul>
+
+                <div class="my-2 bg-light p-2">
+                    <p class="font-italic mb-0">Sự Nghiệp Họa Sĩ:</p>
+                </div>
+                <ul class="list list-unstyled mb-3">
+                    <li class="text-secondary font-weight-normal mb-1">
+                        <span class="ti-arrow-right pr-1 text-primary"></span>
+                        Trước khi trở thành một nhà phát minh nổi tiếng, Morse đã thành công trong sự nghiệp họa sĩ. Ông
+                        đã sáng tạo ra nhiều tác phẩm nổi tiếng và được công nhận với nghệ thuật chân dung.
+                    </li>
+
+                </ul>
+
+                <div class="my-2 bg-light p-2">
+                    <p class="font-italic mb-0">Phát Minh Mã Morse:</p>
+                </div>
+                <ul class="list list-unstyled mb-3">
+                    <li class="text-secondary font-weight-normal mb-1">
+                        <span class="ti-arrow-right pr-1 text-primary"></span>
+                        Sáng chế nổi tiếng của Samuel Morse là hệ thống truyền tin từ xa sử dụng mã Morse, hoàn thiện
+                        vào những năm 1830. Hệ thống này sử dụng các dấu và khoảng cách giữa chúng để biểu thị các chữ
+                        cái, số và dấu câu. Nó cho phép truyền tin điện tử từ xa bằng cách sử dụng dây dẫn, và đã thay
+                        đổi cách giao tiếp và truyền tin trên toàn thế giới. Điều này đã có ảnh hưởng lớn đến việc liên
+                        lạc và giao tiếp trong ngành công nghiệp và quân đội.
+                    </li>
+
+                </ul>
+
+                <div class="my-2 bg-light p-2">
+                    <p class="font-italic mb-0">Sự Thừa Nhận và Kế Thừa:</p>
+                </div>
+                <ul class="list list-unstyled mb-3">
+                    <li class="text-secondary font-weight-normal mb-1">
+                        <span class="ti-arrow-right pr-1 text-primary"></span>
+                        Samuel Morse đã nhận được nhiều vinh danh và thưởng thức trong suốt cuộc đời và sau khi qua đời.
+                        Công nghệ mã Morse đã được áp dụng rộng rãi và có tầm ảnh hưởng lớn trong việc xây dựng hệ thống
+                        viễn thông toàn cầu. Ông qua đời vào ngày 2 tháng 4 năm 1872.
+                    </li>
+
+                </ul>
+
+
+                <!--                        <h5 class="font-weight-normal">Personal Experience</h5>-->
+                <p>Sáng chế của Samuel Morse đã thay đổi cuộc sống và thế giới liên lạc của chúng ta và vẫn còn được sử
+                    dụng trong một số ứng dụng đặc biệt cho đến ngày nay.
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <section id="morse" class="about section-padding prelative" data-scroll-index='1'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectioner-header text-center">
+                        <h3>Bảng MORSE</h3>
+                        <span class="line"></span>
+                        <!--                                <p>CLB Kỹ năng Thắp Sáng đã được thành lập vào ngày 13/7/2017, dưới sự chủ nhiệm của anh Phan Quốc Cường. Chúng tôi tự hào là một nơi thú vị và sáng tạo, nơi bạn có cơ hội khám phá và phát triển các kỹ năng độc đáo như Semaphore, Morse, Gút dây và nhiều kỹ năng khác. Chúng tôi là một cộng đồng đam mê đến từ nhiều lĩnh vực và độ tuổi khác nhau, nhưng chúng tôi có điểm chung là niềm đam mê với việc học hỏi và thực hành các kỹ năng đặc biệt.
+                                                        </p>-->
+                    </div>
+                    <div class="section-content text-center">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-bordered" id="quy_tac">
+                                    <thead style="background-color: #F38887">
+                                        <tr>
+                                            <th scope="col" colspan="4" style="color: white">QUY TẮC</th>
+                                            <!-- <th scope="col" colspan="2" style="color: white">SỐ</th> -->
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="letter_morse">
+                                        <tr>
+                                            <th scope="row">Sẵn sàng nhận</th>
+                                            <td style="color: red;">
+                                                K
+                                            </td>
+                                            <th scope="row">Chú ý</th>
+                                            <td style="color: red;">
+                                                T
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Đã hiểu</th>
+                                            <td style="color: red;">
+                                                E
+                                            </td>
+                                            <th scope="row">Bắt đầu</th>
+                                            <td style="color: red;">
+                                                NW
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Đợi một chút</th>
+                                            <td style="color: red;">
+                                                AS
+                                            </td>
+                                            <th scope="row">Hết bản tin</th>
+                                            <td style="color: red;">
+                                                AR
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">Xin nhắc lại</th>
+                                            <td style="color: red;">
+                                                IMI
+                                            </td>
+                                            <th scope="row">Sai phát lại</th>
+                                            <td style="color: red;">
+                                                HH hoặc 8E
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">Xin phát chậm lại</th>
+                                            <td style="color: red;">
+                                                VL
+                                            </td>
+                                            <th scope="row">Cấp cứu</th>
+                                            <td style="color: red;">
+                                                SOS
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-content text-center">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img style="max-width: 100%;" src="/icon/thap_morse.png">
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="section-content text-center">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <table class="table table-bordered">
+                                    <thead style="background-color: #F38887">
+                                        <tr>
+                                            <th style="color: white" scope="col" colspan="4">CHỮ</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="letter_morse">
+                                        <tr>
+                                            <th scope="row">A</th>
+                                            <td><span>&#8226;</span><span>&#8212;</span></td>
+
+                                            <th scope="row">O</th>
+                                            <td><span>&#8212;</span><span>&#8212;</span><span>&#8212;</span></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">B</th>
+                                            <td><span>&#8212;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span>
+                                            </td>
+
+                                            <th scope="row">P</th>
+                                            <td><span>&#8226;</span><span>&#8212;</span><span>&#8212;</span><span>&#8226;</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">C</th>
+                                            <td><span>&#8212;</span><span>&#8226;</span><span>&#8212;</span><span>&#8226;</span>
+                                            </td>
+                                            <th scope="row">Q</th>
+                                            <td><span>&#8212;</span><span>&#8212;</span><span>&#8226;</span><span>&#8212;</span>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">D</th>
+                                            <td><span>&#8212;</span><span>&#8226;</span><span>&#8226;</span></td>
+                                            <th scope="row">R</th>
+                                            <td><span>&#8226;</span><span>&#8212;</span><span>&#8226;</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">E</th>
+                                            <td><span>&#8226;</span></td>
+                                            <th scope="row">S</th>
+                                            <td><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">F</th>
+                                            <td><span>&#8226;</span><span>&#8226;</span><span>&#8212;</span><span>&#8226;</span>
+                                            </td>
+                                            <th scope="row">T</th>
+                                            <td><span>&#8212;</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">G</th>
+                                            <td><span>&#8212;</span><span>&#8212;</span><span>&#8226;</span></td>
+                                            <th scope="row">U</th>
+                                            <td><span>&#8226;</span><span>&#8226;</span><span>&#8212;</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">H</th>
+                                            <td><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span>
+                                            </td>
+                                            <th scope="row">V</th>
+                                            <td><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8212;</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">I</th>
+                                            <td><span>&#8226;</span><span>&#8226;</span></td>
+                                            <th scope="row">W</th>
+                                            <td><span>&#8226;</span><span>&#8212;</span><span>&#8212;</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">J</th>
+                                            <td><span>&#8226;</span><span>&#8212;</span><span>&#8212;</span><span>&#8212;</span>
+                                            </td>
+                                            <th scope="row">X</th>
+                                            <td><span>&#8212;</span><span>&#8226;</span><span>&#8226;</span><span>&#8212;</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">K</th>
+                                            <td><span>&#8212;</span><span>&#8226;</span><span>&#8212;</span></td>
+                                            <th scope="row">Y</th>
+                                            <td><span>&#8212;</span><span>&#8226;</span><span>&#8212;</span><span>&#8212;</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">L</th>
+                                            <td><span>&#8226;</span><span>&#8212;</span><span>&#8226;</span><span>&#8226;</span>
+                                            </td>
+                                            <th scope="row">Z</th>
+                                            <td><span>&#8212;</span><span>&#8212;</span><span>&#8226;</span><span>&#8226;</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">M</th>
+                                            <td><span>&#8212;</span><span>&#8212;</span></td>
+                                            <th scope="row">CH</th>
+                                            <td><span>&#8212;</span><span>&#8212;</span><span>&#8212;</span><span>&#8212;</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">N</th>
+                                            <td><span>&#8212;</span><span>&#8226;</span></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                            <div class="col-md-4">
+                                <table class="table table-bordered">
+                                    <thead style="background-color: #F38887">
+                                        <tr>
+                                            <th scope="col" colspan="2" style="color: white">SỐ</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="letter_morse">
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td><span>&#8226;</span><span>&#8212;</span><span>&#8212;</span><span>&#8212;</span><span>&#8212;</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td><span>&#8226;</span><span>&#8226;</span><span>&#8212;</span><span>&#8212;</span><span>&#8212;</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8212;</span><span>&#8212;</span>
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">4</th>
+                                            <td><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8212;</span>
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">5</th>
+                                            <td><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">6</th>
+                                            <td><span>&#8212;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">7</th>
+                                            <td><span>&#8212;</span><span>&#8212;</span><span>&#8226;</span><span>&#8226;</span><span>&#8226;</span>
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">8</th>
+                                            <td><span>&#8212;</span><span>&#8212;</span><span>&#8212;</span><span>&#8226;</span><span>&#8226;</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">9</th>
+                                            <td><span>&#8212;</span><span>&#8212;</span><span>&#8212;</span><span>&#8212;</span><span>&#8226;</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">0</th>
+                                            <td><span>&#8212;</span><span>&#8212;</span><span>&#8212;</span><span>&#8212;</span><span>&#8212;</span>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+                        </div>
+
+                        <!--                                <a href="#" class="about-btn">Xem thêm</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div id="about-section" class="container" style="margin-top: 48px ;margin-bottom: 48px ">
+        <div class="row">
+            <div style="margin-bottom:40px " class="sectioner-header text-center">
+                <h3>Luyện tập</h3>
+                <span class="line"></span>
+
+            </div>
+
+
+        </div>
+        <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="textAreaExample6">Nhập bạch văn</label>   
+            <label for="speedSelect" style="margin-left: 30px;">Tốc độ:</label>
+    <select id="speedSelect">
+        <option value="slow">Chậm</option>
+        <option value="normal" selected>Bình thường</option>
+        <option value="fast">Nhanh</option>
+    </select>     
+            <textarea class="form-control" id="textInput" rows="3" style="margin-bottom: 20px;"></textarea>
+          
+
+            <div>
+                
+
+    <button class="btn btn-success" onclick="playText()">Play Text</button>
+    <button class="btn btn-dark" onclick="stopText()">Stop</button>
+    <button class="btn btn-warning" onclick="convertToMorse()">Convert to Morse</button>
+    <p id="morseOutput"></p>
+            </div>
+
+        
+        </div>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        const morseCode = {
+            'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.', 'f': '..-.', 
+            'g': '--.', 'h': '....', 'i': '..', 'j': '.---', 'k': '-.-', 'l': '.-..',
+            'm': '--', 'n': '-.', 'o': '---', 'p': '.--.', 'q': '--.-', 'r': '.-.',
+            's': '...', 't': '-', 'u': '..-', 'v': '...-', 'w': '.--', 'x': '-..-', 
+            'y': '-.--', 'z': '--..', '1': '.----', '2': '..---', '3': '...--', 
+            '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', 
+            '9': '----.', '0': '-----', ' ': '/'
+        };
+
+        const speedOptions = {
+            'slow': 1500,
+            'normal': 1000,
+            'fast': 500
+        };
+
+        function getSelectedSpeed() {
+            const speedSelect = document.getElementById("speedSelect");
+            return speedOptions[speedSelect.value];
+        }
+
+        const telexMap = {
+            'à': 'af', 'á': 'as', 'ả': 'ar', 'ã': 'ax', 'ạ': 'aj',
+            'â': 'aa', 'ầ': 'aaf', 'ấ': 'aas', 'ẩ': 'aar', 'ẫ': 'aax', 'ậ': 'aaj',
+            'ă': 'aw', 'ằ': 'awf', 'ắ': 'aws', 'ẳ': 'awr', 'ẵ': 'awx', 'ặ': 'awj',
+            'è': 'ef', 'é': 'es', 'ẻ': 'er', 'ẽ': 'ex', 'ẹ': 'ej',
+            'ê': 'ee', 'ề': 'eef', 'ế': 'ees', 'ể': 'eer', 'ễ': 'eex', 'ệ': 'eej',
+            'ì': 'if', 'í': 'is', 'ỉ': 'ir', 'ĩ': 'ix', 'ị': 'ij',
+            'ò': 'of', 'ó': 'os', 'ỏ': 'or', 'õ': 'ox', 'ọ': 'oj',
+            'ô': 'oo', 'ồ': 'oof', 'ố': 'oos', 'ổ': 'oor', 'ỗ': 'oox', 'ộ': 'ooj',
+            'ơ': 'ow', 'ờ': 'owf', 'ớ': 'ows', 'ở': 'owr', 'ỡ': 'owx', 'ợ': 'owj',
+            'ù': 'uf', 'ú': 'us', 'ủ': 'ur', 'ũ': 'ux', 'ụ': 'uj',
+            'ư': 'uw', 'ừ': 'uwf', 'ứ': 'uws', 'ử': 'uwr', 'ữ': 'uwx', 'ự': 'uwj',
+            'ỳ': 'yf', 'ý': 'ys', 'ỷ': 'yr', 'ỹ': 'yx', 'ỵ': 'yj',
+            'đ': 'dd'
+        };
+
+        let currentAudio = null; // Global variable to keep track of current audio
+        let stopRequested = false; // Flag to indicate if stop is requested
+
+        function convertToTelex(text) {
+            return text.split('').map(char => telexMap[char] || char).join('');
+        }
+
+        function playText() {
+            stopRequested = false; // Reset the stop flag
+            const text = convertToTelex(document.getElementById("textInput").value.toLowerCase());
+            const speed = getSelectedSpeed();
+            let index = -2; // Start with -2 to account for NW and AR
+
+            function playNext() {
+                if (stopRequested) return; // Stop playback if stop is requested
+
+                if (index === -2) {
+                    // Play NW.mp3 first
+                    currentAudio = new Audio('../sounds/NW.mp3');
+                    currentAudio.onended = () => {
+                        index++;
+                        setTimeout(playNext, speed); // Pause between NW and the main text
+                    };
+                    currentAudio.play();
+                } else if (index < text.length) {
+                    const char = text[index];
+                    if (char >= 'a' && char <= 'z') {
+                        currentAudio = new Audio(`../sounds/${char}.mp3`);
+                        currentAudio.onended = () => {
+                            index++;
+                            setTimeout(playNext, speed / 2); // Adjusted timing for individual characters
+                        };
+                        currentAudio.play();
+                    } else if (char === ' ') {
+                        index++;
+                        setTimeout(playNext, speed); // Adjusted timing for spaces between words
+                    } else {
+                        index++;
+                        playNext();
+                    }
+                } else if (index === text.length) {
+                    // Play AR.mp3 at the end
+                    currentAudio = new Audio('../sounds/AR.mp3');
+                    currentAudio.onended = () => {
+                        index++;
+                    };
+                    currentAudio.play();
+                }
+            }
+
+            playNext();
+        }
+
+        function stopText() {
+            stopRequested = true; // Set the stop flag
+            if (currentAudio) {
+                currentAudio.pause(); // Pause the current audio
+                currentAudio.currentTime = 0; // Reset the audio playback position
+            }
+        }
+
+        function convertToMorse() {
+            const text = convertToTelex(document.getElementById("textInput").value.toLowerCase());
+            let morseText = '';
+
+            for (const char of text) {
+                if (morseCode[char]) {
+                    morseText += morseCode[char] + ' ';
+                }
+            }
+
+            document.getElementById("morseOutput").textContent = morseText.trim();
+        }
+    </script>
+   
+    <!-- content -->
+    <section class="download section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectioner-header text-center white">
+                        <img style="width: 200px;
+                                                                            height: 50px" src="../images/logo.png"
+                            alt="logo" class="logo-1">
+                        <span class="line"></span>
+                        <p class="white">Sống với đam mê - Cháy cùng nhiệt huyết</p>
+                        <p class="white">Thắp sáng cho tôi - Thắp sáng cho bạn</p>
+                        <p class="white">Và niềm tin thắp sáng Việt Nam</p>
+
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="section-content text-center">
+                        <img src="../img/logo_ts.png" class="img-fluid wow fadeInUp" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-------Download End------->
+
+    <footer class="footer-copy">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>2023 &copy; Applight. Website Designed by <span style="color: red"> Thắp Sáng</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--<div class="loader"></div>-->
+
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "140429645814710");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v18.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <!-- scrollIt js -->
+    <script src="../js/scrollIt.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+
+    <script>
+        wow = new WOW();
+        wow.init();
+        $(document).ready(function (e) {
+
+            $('#video-icon').on('click', function (e) {
+                e.preventDefault();
+                $('.video-popup').css('display', 'flex');
+                $('.iframe-src').slideDown();
+            });
+            $('.video-popup').on('click', function (e) {
+                var $target = e.target.nodeName;
+                var video_src = $(this).find('iframe').attr('src');
+                if ($target != 'IFRAME') {
+                    $('.video-popup').fadeOut();
+                    $('.iframe-src').slideUp();
+                    $('.video-popup iframe').attr('src', " ");
+                    $('.video-popup iframe').attr('src', video_src);
+                }
+            });
+
+            $('.slider').bxSlider({
+                pager: false
+            });
+        });
+
+        $(window).on("scroll", function () {
+
+            var bodyScroll = $(window).scrollTop(),
+                navbar = $(".navbar");
+
+            if (bodyScroll > 50) {
+                $('.navbar-logo img').attr('src', '/images/logo-black.png');
+                navbar.addClass("nav-scroll");
+
+            } else {
+                $('.navbar-logo img').attr('src', '/images/logo.png');
+                navbar.removeClass("nav-scroll");
+            }
+
+        });
+        $(window).on("load", function () {
+            var bodyScroll = $(window).scrollTop(),
+                navbar = $(".navbar");
+
+            if (bodyScroll > 50) {
+                $('.navbar-logo img').attr('src', '/images/logo-black.png');
+                navbar.addClass("nav-scroll");
+            } else {
+                $('.navbar-logo img').attr('src', '/images/logo-white.png');
+                navbar.removeClass("nav-scroll");
+            }
+
+            $.scrollIt({
+
+                easing: 'swing', // the easing function for animation
+                scrollTime: 900, // how long (in ms) the animation takes
+                activeClass: 'active', // class given to the active nav element
+                onPageChange: null, // function(pageIndex) that is called when page is changed
+                topOffset: -63
+            });
+        });
+
+    </script>
+</body>
+
+</html>

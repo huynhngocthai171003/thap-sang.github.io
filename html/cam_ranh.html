@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cam ranh</title>
+    <link rel="icon" href="/img/logo_ts.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <style>
+        #showMoreBtn {
+            background-color: lightcoral;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #showMoreBtn:hover {
+            background-color: #eb2f2d;
+        }
+
+        .dropdown-item.active,
+        .dropdown-item:active {
+            color: #fff;
+            text-decoration: none;
+            background-color: lightcoral !important;
+        }
+
+        .bg-light {
+            background-color: #F69C9B !important;
+            color: white !important;
+        }
+        .table-container {
+  width: 100%;
+  overflow-x: auto; 
+  /* max-height: 400px;  */
+}
+    </style>
+</head>
+
+<body>
+    <script>
+        // Kiểm tra xem người dùng đã đăng nhập hay chưa (thông qua local storage)
+        if (!localStorage.getItem("isLoggedIn")) {
+            localStorage.setItem("redirectAfterLogin", "cam_ranh.html");
+            window.location.href = "login.html";
+        }
+
+    </script>
+
+    <nav class="navbar navbar-expand-lg" id="top">
+        <div class="container"> <a class="navbar-brand navbar-logo" href="../index.html"> <img style="width: 200px;
+                                                                                         height: 50px"
+                    src="images/logo.png" alt="logo" class="logo-1"> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
+                    class="fas fa-bars"></span> </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"> <a class="nav-link" href="../index.html">Trang chủ</a> </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Kỹ năng
+                        </a>
+                        <div class="dropdown-menu list_menu" aria-labelledby="skillDropdown">
+                            <!-- Thêm các mục con vào đây -->
+                            <a class="dropdown-item" href="morse.html">Morse</a>
+                            <hr>
+                            <a class="dropdown-item " href="semaphore.html">Semaphore</a>
+                            <hr>
+                            <a class="dropdown-item" href="gut_day.html">Gút dây</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mật thư
+                        </a>
+                        <div class="dropdown-menu list_menu" aria-labelledby="skillDropdown">
+                            <!-- Thêm các mục con vào đây -->
+                            <a class="dropdown-item active" href="cam_ranh.html">Cam ranh</a>
+                            <hr>
+                            <a class="dropdown-item" href="thay_the.html">Thay thế</a>
+
+                        </div>
+                    </li>
+                    <!--<li class="nav-item"> <a class="nav-link" href="@{/mat_thu}">Mật thư</a> </li>-->
+                    <li class="nav-item"> <a class="nav-link" href="about.html">Về CLB_TS</a> </li>
+
+
+                    <li class="nav-item"> <a class="nav-link" href="contact.html">Liên hệ</a> </li>
+                    <p th:text="${get}"></p>
+                    <li class="nav-item" id="logoutContainer">
+
+                        <button id="logoutButton" class="btn btn-primary customStyle-btn-primary " type="submit"></i>
+                            Đăng xuất </button>
+                    </li>
+
+                    <script>
+
+                        var _0x71b8 = ["\x69\x73\x4C\x6F\x67\x67\x65\x64\x49\x6E", "\x67\x65\x74\x49\x74\x65\x6D", "\x6C\x6F\x67\x6F\x75\x74\x43\x6F\x6E\x74\x61\x69\x6E\x65\x72", "\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64", "\x64\x69\x73\x70\x6C\x61\x79", "\x73\x74\x79\x6C\x65", "\x62\x6C\x6F\x63\x6B", "\x6E\x6F\x6E\x65"]; const isLoggedIn = localStorage[_0x71b8[1]](_0x71b8[0]); const logoutContainer = document[_0x71b8[3]](_0x71b8[2]); if (isLoggedIn) { logoutContainer[_0x71b8[5]][_0x71b8[4]] = _0x71b8[6] } else { logoutContainer[_0x71b8[5]][_0x71b8[4]] = _0x71b8[7] }
+                    </script>
+
+                    <script>
+
+                        var _0x19af = ["\x63\x6C\x69\x63\x6B", "\x69\x73\x4C\x6F\x67\x67\x65\x64\x49\x6E", "\x72\x65\x6D\x6F\x76\x65\x49\x74\x65\x6D", "\x68\x72\x65\x66", "\x6C\x6F\x63\x61\x74\x69\x6F\x6E", "\x2E\x2E\x2F\x69\x6E\x64\x65\x78\x2E\x68\x74\x6D\x6C", "\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72", "\x6C\x6F\x67\x6F\x75\x74\x42\x75\x74\x74\x6F\x6E", "\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64"]; document[_0x19af[8]](_0x19af[7])[_0x19af[6]](_0x19af[0], function () { localStorage[_0x19af[2]](_0x19af[1]); window[_0x19af[4]][_0x19af[3]] = _0x19af[5] })
+                    </script>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-------Banner Start------->
+    <section class="banner" data-scroll-index='0'>
+        <div class="banner-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <div class="banner-text">
+                            <h3 style="text-transform: uppercase" class="white">Mật thư cam ranh</h3>
+
+                            <!-- <h6 class="white"><i>Morse - Khám phá thế giới của ngôn ngữ Morse, hệ thống truyền thông
+                                    bằng âm thanh và ánh sáng, và làm quen với việc gửi và nhận các thông điệp bằng mã
+                                    Morse.</i></h6> -->
+
+                            <ul class="banner-text white" style="padding-bottom: 50px">
+                                <li><a href="#"><img src="../icon/icon_key.png" class="wow fadeInUp"
+                                            data-wow-delay="0.4s" /></a></li>
+                                <li><a href="#"><img src="../icon/icon_matthu.png" class="wow fadeInUp"
+                                            data-wow-delay="0.7s" /></a></li>
+                                <li><a href="#"><img src="../icon/icon_vanbanr.png" class="wow fadeInUp"
+                                            data-wow-delay="0.9s" /></a></li>
+                                            
+
+                            </ul>
+                            <script>
+                                $(document).ready(function () {
+                                    $('a[href^="#"]').on('click', function (e) {
+                                        e.preventDefault();
+
+                                        var target = this.hash;
+                                        var $target = $(target);
+
+                                        // Thời gian lướt mượt (milliseconds)
+                                        var scrollTime = 1000;
+
+                                        $('html, body').animate({
+                                            'scrollTop': $target.offset().top
+                                        }, scrollTime, 'swing');
+                                    });
+                                });
+                            </script>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12"> <img src="../img/logo_ts.png" class="img-fluid wow fadeInUp" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="svg-wave"> <img class="svg-hero" src="../images/applight-wave.svg"> </span>
+    </section>
+
+    <!-- content -->
+
+    <section class="about section-padding prelative" data-scroll-index='1'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectioner-header text-center">
+                        <h3>Mật thư Cam Ranh</h3>
+                        <span class="line"></span>
+                        <!--                                <p>CLB Kỹ năng Thắp Sáng đã được thành lập vào ngày 13/7/2017, dưới sự chủ nhiệm của anh Phan Quốc Cường. Chúng tôi tự hào là một nơi thú vị và sáng tạo, nơi bạn có cơ hội khám phá và phát triển các kỹ năng độc đáo như Semaphore, Morse, Gút dây và nhiều kỹ năng khác. Chúng tôi là một cộng đồng đam mê đến từ nhiều lĩnh vực và độ tuổi khác nhau, nhưng chúng tôi có điểm chung là niềm đam mê với việc học hỏi và thực hành các kỹ năng đặc biệt.
+                                                        </p>-->
+                    </div>
+                    <div class="section-content">
+                        <div class="row">
+
+
+                            <div class="col-md-12">
+
+                                <div class="wrapper">
+
+                                    <div class="text-center name" style="color: red">
+                                        Lưu ý
+                                    </div>
+                                    <div style="text-align: left">
+                                        <div class="mt-4 name" style="font-size: 16px; color: lightcoral">
+                                            Đã là thành viên của câu lạc bộ thì mọi người phải biết rằng: Mật thư cam
+                                            ranh là dạng mật thư sắp các nhóm mẫu tự thành các cột dọc tương ứng với số
+                                            thứ tự được đánh theo khóa của mật thư. Cho nên:
+                                        </div>
+                                        <ul class="mt-4 name" style="font-size: 15px">
+                                            <li>Vui lòng nhập bạch văn: giữa các nhóm mẫu tự cách bằng dấu phẩy (nếu
+                                                không thì miễn giải).</li>
+                                            <li>Mật thư phải đúng dạng: nhóm mẫu tự phải đủ với số lượng ký tự sau khi
+                                                sắp khóa ra.</li>
+                                            <li>Mật thư mà không đủ nhóm mẫu tự thì tự giải, không có máy móc nào mà
+                                                giải những mật thư tự do, không đúng dạng như thế.</li>
+                                            <li>Còn nếu người ra mật thư nói, mật thư tôi như vậy á. Thì lên thẳng và
+                                                dứt luôn. Không ngán một ai.</li>
+                                            <li> Mọi người cứ việc nhập khóa tiếng việt, còn lại cứ để tôi lo: ví dụ
+                                                khóa là Việt Nam thì cứ nhập Việt Nam.</li>
+                                            <li>Đọc kỹ hướng dẫn sử dụng trước khi dùng. Xin cảm ơn !</li>
+
+
+
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card customStyle-card-form">
+                                    <div class="card-body">
+                                        <h5 class="card-title customStyle-card-title-form"><i class="bi bi-person"></i>
+                                            Cam ranh</h5>
+                                        <!--onsubmit="validateForm()"-->
+                                        <form class="row g-3 needs-validation" id="myForm" name="contactForm">
+
+                                            <div class="col-md-12">
+                                                <label for="validationCustom03" class="form-label">Nhập khóa</label>
+                                                <textarea type="text" name="key" id="key" class="form-control"
+                                                    autocomplete="off"></textarea>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <label for="validationCustom03" class="form-label">Nhập bạch văn</label>
+                                                <textarea name="message" id="message" class="form-control"></textarea>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <label for="validationCustom03" class="form-label">Khoảng cách giữa các
+                                                    mẫu tự bằng dấu phẩy, gạch ngang hoặc khoảng trắng</label>
+                                                <!--                                                        <textarea id="maHoachieuNghich"  type="text" class="form-control" required autocomplete="off"></textarea>-->
+                                            </div>
+
+                                            <div class="col-12">
+                                                <button id="submitButton"
+                                                    class="btn btn-primary customStyle-btn-primary" type="submit"><i
+                                                        class="bi bi-send-fill"></i> Dịch </button>
+                                            </div>
+
+                                        </form>
+                            
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                          
+                            <div class="table-container">
+                            <table id="resultTable" style="margin-top: 50px; text-align: center;"
+                                class="table table-bordered">
+
+                            </table>
+                            </div>
+
+                            <script>
+                                const _0x2f6783=_0x9c80;(function(_0x1bf156,_0x1893c3){const _0x372498=_0x9c80,_0x45bc58=_0x1bf156();while(!![]){try{const _0x13e42d=-parseInt(_0x372498(0x157))/(0x1*0x6f2+-0x1b1c+0x142b)*(parseInt(_0x372498(0x166))/(0xa*-0x49+0x167*0xc+0x8*-0x1bf))+-parseInt(_0x372498(0x15b))/(-0x1e5*0x1+0x1*0x38b+-0x1a3)*(-parseInt(_0x372498(0x19b))/(0x1ee7+-0x4c2+-0x1*0x1a21))+-parseInt(_0x372498(0x169))/(0x9c+-0x226d*-0x1+-0x2304)+parseInt(_0x372498(0x172))/(0x112e+0x29*0x97+-0x2957)+parseInt(_0x372498(0x1c9))/(-0x206d+-0x1ec2+0x3f36)*(-parseInt(_0x372498(0x168))/(-0x3da*-0x1+0x1915+-0x1ce7))+-parseInt(_0x372498(0x1be))/(0x1*-0x1574+0x1e2a+-0x8ad)*(parseInt(_0x372498(0x158))/(-0xee3+0x16c0+-0x1*0x7d3))+parseInt(_0x372498(0x1b2))/(0xaf+-0x205f*0x1+-0x1fbb*-0x1)*(parseInt(_0x372498(0x1b1))/(-0x2166+-0x1*0x727+0x13*0x223));if(_0x13e42d===_0x1893c3)break;else _0x45bc58['push'](_0x45bc58['shift']());}catch(_0xf31195){_0x45bc58['push'](_0x45bc58['shift']());}}}(_0x2345,-0xd3a5+0xaa40b+-0x2d620),document[_0x2f6783(0x196)+_0x2f6783(0x1b7)](_0x2f6783(0x1ba))[_0x2f6783(0x162)+_0x2f6783(0x197)](_0x2f6783(0x159),function(_0x8e9827){const _0x44cd6e=_0x2f6783,_0x78ce78={'xngbH':function(_0x569897,_0xf19984){return _0x569897(_0xf19984);},'OHwbQ':function(_0x4097e7,_0x35215f){return _0x4097e7-_0x35215f;},'ryURF':_0x44cd6e(0x189),'EZovN':_0x44cd6e(0x1a6),'ahqGu':_0x44cd6e(0x19a),'yMqXU':_0x44cd6e(0x1b9),'YZtUE':_0x44cd6e(0x17f),'WSREG':_0x44cd6e(0x173),'wlCHd':_0x44cd6e(0x15f),'ZKEWt':function(_0x36f9f6,_0x4976b1){return _0x36f9f6===_0x4976b1;},'QgJTQ':_0x44cd6e(0x171)+_0x44cd6e(0x194)+_0x44cd6e(0x1cf),'cuokh':_0x44cd6e(0x1b5),'JQOPZ':_0x44cd6e(0x192)+_0x44cd6e(0x18f)+_0x44cd6e(0x1ae)+_0x44cd6e(0x19c)+_0x44cd6e(0x1cd)+_0x44cd6e(0x17c)+_0x44cd6e(0x1aa)+_0x44cd6e(0x17d)+')','NPzVj':_0x44cd6e(0x192)+_0x44cd6e(0x18f)+_0x44cd6e(0x1bb)+_0x44cd6e(0x16d)+_0x44cd6e(0x175)+_0x44cd6e(0x18e)+_0x44cd6e(0x1a1)+_0x44cd6e(0x160)+_0x44cd6e(0x17a),'MMYbS':function(_0x1d8bc6,_0x1f1fb8){return _0x1d8bc6<_0x1f1fb8;},'cEJnA':function(_0x40c023,_0x2ea0d2){return _0x40c023+_0x2ea0d2;},'BPyAe':function(_0x83e377,_0x450dca){return _0x83e377>_0x450dca;},'OYZKu':function(_0xb8e05d,_0x11cd1e){return _0xb8e05d(_0x11cd1e);},'TrawT':function(_0x14765d,_0x16c937){return _0x14765d===_0x16c937;},'qpLFH':function(_0x116d7a,_0x230d99){return _0x116d7a+_0x230d99;},'yWwHP':function(_0x1ed01f,_0x1cb9e2){return _0x1ed01f+_0x1cb9e2;},'DAkQr':function(_0x351261,_0x2ef8ba){return _0x351261-_0x2ef8ba;},'HCLJE':function(_0x3fefaf,_0x324383){return _0x3fefaf>_0x324383;},'sdwNE':function(_0x55a1c6,_0x548da6){return _0x55a1c6<_0x548da6;},'koTBo':function(_0x164cd2,_0x1477ad){return _0x164cd2+_0x1477ad;},'YIycT':function(_0x7840a5,_0x539b21){return _0x7840a5<_0x539b21;},'NzAzX':function(_0x35c999,_0x3f5f6){return _0x35c999<_0x3f5f6;},'MwYmM':_0x44cd6e(0x16b)+'e','MtnUc':_0x44cd6e(0x1a0),'GYzHE':_0x44cd6e(0x170),'cWxWN':_0x44cd6e(0x19f)};_0x8e9827[_0x44cd6e(0x155)+_0x44cd6e(0x181)]();const _0x2d1ebe=document[_0x44cd6e(0x196)+_0x44cd6e(0x1b7)](_0x78ce78[_0x44cd6e(0x1c4)]),_0x3abf47=document[_0x44cd6e(0x196)+_0x44cd6e(0x1b7)](_0x78ce78[_0x44cd6e(0x1b8)]),_0x4b3577=_0x2d1ebe[_0x44cd6e(0x1b3)][_0x44cd6e(0x164)+'e']();let _0x5c5f34=_0x3abf47[_0x44cd6e(0x1b3)][_0x44cd6e(0x164)+'e']();console[_0x44cd6e(0x179)](_0x5c5f34);if(_0x78ce78[_0x44cd6e(0x163)](_0x4b3577[_0x44cd6e(0x17b)](),'')){Swal[_0x44cd6e(0x1ad)]({'imageUrl':_0x78ce78[_0x44cd6e(0x154)],'imageWidth':0x64,'title':_0x78ce78[_0x44cd6e(0x16c)],'text':_0x78ce78[_0x44cd6e(0x177)]});return;}if(_0x78ce78[_0x44cd6e(0x163)](_0x5c5f34[_0x44cd6e(0x17b)](),'')){Swal[_0x44cd6e(0x1ad)]({'imageUrl':_0x78ce78[_0x44cd6e(0x154)],'imageWidth':0x64,'title':_0x78ce78[_0x44cd6e(0x16c)],'text':_0x78ce78[_0x44cd6e(0x18c)]});return;}const _0x4b5ec0=_0x4b3577[_0x44cd6e(0x1c2)]('\x20');let _0x1897b5='';_0x4b5ec0[_0x44cd6e(0x16a)](_0x3706e3=>{const _0x53828f=_0x44cd6e,_0xc08105=_0x78ce78[_0x53828f(0x16f)](convertToNoDiacritics,_0x3706e3);_0x1897b5+=_0xc08105;});const _0x3a3a8a={'a':0x1,'b':0x2,'c':0x3,'d':0x4,'e':0x5,'f':0x6,'g':0x7,'h':0x8,'i':0x9,'j':0xa,'k':0xb,'l':0xc,'m':0xd,'n':0xe,'o':0xf,'p':0x10,'q':0x11,'r':0x12,'s':0x13,'t':0x14,'u':0x15,'v':0x16,'w':0x17,'x':0x18,'y':0x19,'z':0x1a},_0x3bf994=_0x1897b5[_0x44cd6e(0x1c2)]('')[_0x44cd6e(0x156)]((_0x156f5d,_0x20d2e2)=>{const _0x4f3e32=_0x44cd6e,_0x5622a4=_0x3a3a8a[_0x156f5d]||Number[_0x4f3e32(0x1ce)],_0x74eb6e=_0x3a3a8a[_0x20d2e2]||Number[_0x4f3e32(0x1ce)];return _0x78ce78[_0x4f3e32(0x1af)](_0x5622a4,_0x74eb6e);})[_0x44cd6e(0x1d0)](''),_0xf3e92f={};for(let _0x569729=0x1*0x1de+0x6c*-0x14+0x1*0x692;_0x78ce78[_0x44cd6e(0x1cc)](_0x569729,_0x3bf994[_0x44cd6e(0x1ab)]);_0x569729++){const _0x520e5e=_0x3bf994[_0x44cd6e(0x183)](_0x569729);_0xf3e92f[_0x520e5e]=_0xf3e92f[_0x520e5e]||[],_0xf3e92f[_0x520e5e][_0x44cd6e(0x174)](_0x78ce78[_0x44cd6e(0x1c3)](_0x569729,0x1158+0x1517+-0x266e));}let _0x5f4a02='';for(let _0xaf13bd=-0x1f4+-0x3f9+0x5ed;_0x78ce78[_0x44cd6e(0x1cc)](_0xaf13bd,_0x3bf994[_0x44cd6e(0x1ab)]);_0xaf13bd++){const _0x132ca1=_0x3bf994[_0x44cd6e(0x183)](_0xaf13bd),_0x55a7b0=_0xf3e92f[_0x132ca1];if(_0x55a7b0&&_0x78ce78[_0x44cd6e(0x1b0)](_0x55a7b0[_0x44cd6e(0x1ab)],0x59f*0x5+-0xc0b+-0x1010)){const _0x21b261=_0x55a7b0[_0x44cd6e(0x1a7)]();_0x5f4a02+=_0x78ce78[_0x44cd6e(0x1c3)](_0x78ce78[_0x44cd6e(0x1c3)](_0x132ca1,_0x21b261),'\x20');}}const _0x2d9bea=[],_0x13848d=/([a-z])(\d+)/g;let _0x1a660f;for(const _0x132224 of _0x1897b5){const _0x1274b1=_0x132224[_0x44cd6e(0x178)]();while(_0x1a660f=_0x13848d[_0x44cd6e(0x1c7)](_0x5f4a02)){const _0x4241a0=_0x1a660f[0x1079*0x1+0x57*-0xc+-0xc64],_0x2015e8=_0x78ce78[_0x44cd6e(0x1ca)](parseInt,_0x1a660f[-0x261d*-0x1+-0xe91+-0x2e*0x83]);if(_0x78ce78[_0x44cd6e(0x1b4)](_0x4241a0,_0x1274b1)){_0x2d9bea[_0x44cd6e(0x174)](_0x78ce78[_0x44cd6e(0x187)](_0x4241a0,_0x2015e8)),_0x5f4a02=_0x78ce78[_0x44cd6e(0x1c3)](_0x5f4a02[_0x44cd6e(0x1bd)](0x14ea+-0x4d5*0x5+-0x33f*-0x1,_0x1a660f[_0x44cd6e(0x18d)]),_0x5f4a02[_0x44cd6e(0x1bd)](_0x78ce78[_0x44cd6e(0x198)](_0x1a660f[_0x44cd6e(0x18d)],_0x1a660f[0x2237*-0x1+-0xd*-0x227+-0x4*-0x18f][_0x44cd6e(0x1ab)]))),_0x13848d[_0x44cd6e(0x180)]=-0x3d*0xf+0x26f5+-0x2362*0x1;break;}}}const _0x2ce012=_0x2d9bea[_0x44cd6e(0x191)](_0xa35bd3=>parseInt(_0xa35bd3[_0x44cd6e(0x1bd)](0x22c7*-0x1+-0x1*0x1aff+0x3dc7))),_0x2b12a8=_0x2d9bea[_0x44cd6e(0x191)](_0x5257cf=>_0x5257cf[_0x44cd6e(0x183)](0x1b*-0xaa+-0x258c+0x377a)),_0x1b31b2=/^[^A-Za-z]+/;_0x5c5f34=_0x5c5f34[_0x44cd6e(0x165)](_0x1b31b2,'');const _0xb10c0e=_0x5c5f34[_0x44cd6e(0x1c2)](/[^a-zA-ZÀ-Ỹà-ỹ]+/u);let _0x4e702b=-0xb1f+0x255c+0x3*-0x8bf;for(const _0x2c445e of _0xb10c0e){const _0x3217f2=_0x2c445e[_0x44cd6e(0x17b)]()[_0x44cd6e(0x1ab)];_0x78ce78[_0x44cd6e(0x1b0)](_0x3217f2,_0x4e702b)&&(_0x4e702b=_0x3217f2);}for(let _0x304cae=-0x2*0x453+0x2305+-0x1a5f;_0x78ce78[_0x44cd6e(0x1cc)](_0x304cae,_0xb10c0e[_0x44cd6e(0x1ab)]);_0x304cae++){const _0x4fcc2a=_0xb10c0e[_0x304cae][_0x44cd6e(0x17b)](),_0x1dbe54=_0x78ce78[_0x44cd6e(0x184)](_0x4e702b,_0x4fcc2a[_0x44cd6e(0x1ab)]);if(_0x78ce78[_0x44cd6e(0x1a2)](_0x1dbe54,-0x1957+0x761+0x11f6)){const _0x4ecd69=new Array(_0x1dbe54)[_0x44cd6e(0x19d)]('z')[_0x44cd6e(0x1d0)]('');_0xb10c0e[_0x304cae]=_0x78ce78[_0x44cd6e(0x187)](_0x4fcc2a,_0x4ecd69);}}const _0x5bdc39={};for(let _0x2bc4d2=0xfe*0x6+0x2*-0x3e+0x14*-0x46;_0x78ce78[_0x44cd6e(0x17e)](_0x2bc4d2,_0xb10c0e[_0x44cd6e(0x1ab)]);_0x2bc4d2++){const _0x31084e=_0xb10c0e[_0x2bc4d2][_0x44cd6e(0x17b)](),_0x204665=_0x31084e[_0x44cd6e(0x1c2)]('');_0x5bdc39[_0x78ce78[_0x44cd6e(0x1a9)](_0x2bc4d2,0x10*-0x220+0x1*0xb7+0x10a5*0x2)]=_0x204665;}const _0xea0290=[..._0x2ce012],_0x89a0ab=new Map();for(const _0x4812b1 of _0xea0290){_0x89a0ab[_0x44cd6e(0x1bc)](_0x4812b1,_0x5bdc39[_0x4812b1]);}const _0x3338f9=[];_0x89a0ab[_0x44cd6e(0x16a)](_0x44503e=>{const _0x4f5bde=_0x44cd6e;_0x3338f9[_0x4f5bde(0x174)](_0x44503e);});const _0x10e571=[],_0x412fd0=_0x3338f9[_0x44cd6e(0x1ab)],_0xa40337=_0x3338f9[0x1913+0x75a*-0x2+-0xa5f][_0x44cd6e(0x1ab)];for(let _0x2036fe=-0x1480+0x2*0xacb+-0x116;_0x78ce78[_0x44cd6e(0x15c)](_0x2036fe,_0xa40337);_0x2036fe++){const _0x445990=[];for(let _0x1432d0=-0x103+0x10a5*-0x2+-0x3*-0xb6f;_0x78ce78[_0x44cd6e(0x1cb)](_0x1432d0,_0x412fd0);_0x1432d0++){_0x445990[_0x44cd6e(0x174)](_0x3338f9[_0x1432d0][_0x2036fe]);}_0x10e571[_0x44cd6e(0x174)](_0x445990);}const _0x505298=document[_0x44cd6e(0x196)+_0x44cd6e(0x1b7)](_0x78ce78[_0x44cd6e(0x16e)]);_0x505298[_0x44cd6e(0x18b)]='';const _0x4f41c7=document[_0x44cd6e(0x1a4)+_0x44cd6e(0x1b6)](_0x78ce78[_0x44cd6e(0x176)]),_0x1785cc=document[_0x44cd6e(0x1a4)+_0x44cd6e(0x1b6)]('tr');_0x2b12a8[_0x44cd6e(0x16a)](_0x1fa202=>{const _0xa9b616=_0x44cd6e,_0x17247c=document[_0xa9b616(0x1a4)+_0xa9b616(0x1b6)]('th');_0x17247c[_0xa9b616(0x1c6)+'t']=_0x1fa202,_0x1785cc[_0xa9b616(0x19e)+'d'](_0x17247c);}),_0x1785cc[_0x44cd6e(0x161)][_0x44cd6e(0x1a8)+_0x44cd6e(0x1a5)]=_0x78ce78[_0x44cd6e(0x15e)],_0x1785cc[_0x44cd6e(0x161)][_0x44cd6e(0x188)]=_0x78ce78[_0x44cd6e(0x1c1)],_0x4f41c7[_0x44cd6e(0x19e)+'d'](_0x1785cc),_0x505298[_0x44cd6e(0x19e)+'d'](_0x4f41c7);const _0x5afad0=document[_0x44cd6e(0x1a4)+_0x44cd6e(0x1b6)](_0x78ce78[_0x44cd6e(0x195)]),_0x4dd262=document[_0x44cd6e(0x1a4)+_0x44cd6e(0x1b6)]('tr');_0x2ce012[_0x44cd6e(0x16a)](_0x35f751=>{const _0x3a8cdb=_0x44cd6e,_0xa94aea=document[_0x3a8cdb(0x1a4)+_0x3a8cdb(0x1b6)]('td');_0xa94aea[_0x3a8cdb(0x1c6)+'t']=_0x35f751,_0x4dd262[_0x3a8cdb(0x19e)+'d'](_0xa94aea);}),_0x4dd262[_0x44cd6e(0x161)][_0x44cd6e(0x167)]=_0x78ce78[_0x44cd6e(0x193)],_0x5afad0[_0x44cd6e(0x19e)+'d'](_0x4dd262),_0x10e571[_0x44cd6e(0x16a)](_0x4c5a79=>{const _0x39ba86=_0x44cd6e,_0x3f2076={'WIFdr':_0x78ce78[_0x39ba86(0x193)],'lorUX':_0x78ce78[_0x39ba86(0x186)],'BuAzq':_0x78ce78[_0x39ba86(0x15d)],'AVwBy':_0x78ce78[_0x39ba86(0x15e)],'OQkPz':_0x78ce78[_0x39ba86(0x1c0)]},_0x2b3b00=document[_0x39ba86(0x1a4)+_0x39ba86(0x1b6)]('tr');_0x4c5a79[_0x39ba86(0x16a)](_0x208ab8=>{const _0x50bee=_0x39ba86,_0x300976={'UNDiQ':_0x3f2076[_0x50bee(0x1c8)],'pTUex':_0x3f2076[_0x50bee(0x185)],'hRNAB':_0x3f2076[_0x50bee(0x18a)]},_0x5af47e=document[_0x50bee(0x1a4)+_0x50bee(0x1b6)]('td');_0x5af47e[_0x50bee(0x1c6)+'t']=_0x208ab8;let _0x54c827=![];_0x5af47e[_0x50bee(0x161)][_0x50bee(0x1a8)+_0x50bee(0x1a5)]=_0x3f2076[_0x50bee(0x182)],_0x5af47e[_0x50bee(0x162)+_0x50bee(0x197)](_0x3f2076[_0x50bee(0x199)],function(){const _0x3391c9=_0x50bee;!_0x54c827?(_0x5af47e[_0x3391c9(0x161)][_0x3391c9(0x190)+_0x3391c9(0x15a)]=_0x300976[_0x3391c9(0x1a3)],_0x5af47e[_0x3391c9(0x161)][_0x3391c9(0x167)]=_0x300976[_0x3391c9(0x1ac)],_0x54c827=!![]):(_0x5af47e[_0x3391c9(0x161)][_0x3391c9(0x190)+_0x3391c9(0x15a)]=_0x300976[_0x3391c9(0x1ac)],_0x5af47e[_0x3391c9(0x161)][_0x3391c9(0x167)]=_0x300976[_0x3391c9(0x1c5)],_0x54c827=![]);}),_0x2b3b00[_0x50bee(0x19e)+'d'](_0x5af47e);}),_0x5afad0[_0x39ba86(0x19e)+'d'](_0x2b3b00);}),_0x505298[_0x44cd6e(0x19e)+'d'](_0x5afad0);}));function convertToNoDiacritics(_0x27aedd){const _0x776e1b=_0x2f6783,_0x3ab64b={'QLCXw':function(_0x311a72,_0x525ead){return _0x311a72<_0x525ead;}};let _0x79b90c='',_0x21ce1e='';for(let _0x8cddd8=0x1*-0x223d+-0x38d+0x2*0x12e5;_0x3ab64b[_0x776e1b(0x1bf)](_0x8cddd8,_0x27aedd[_0x776e1b(0x1ab)]);_0x8cddd8++){const _0x413bd8=_0x27aedd[_0x776e1b(0x183)](_0x8cddd8);switch(_0x413bd8){case'a':_0x79b90c+='a';break;case'à':_0x21ce1e='f',_0x79b90c+='a';break;case'ả':_0x21ce1e='r',_0x79b90c+='a';break;case'ã':_0x21ce1e='x',_0x79b90c+='a';break;case'á':_0x21ce1e='s',_0x79b90c+='a';break;case'ạ':_0x21ce1e='j',_0x79b90c+='a';break;case'ă':_0x79b90c+='aw';break;case'ắ':_0x21ce1e='s',_0x79b90c+='aw';break;case'ằ':_0x21ce1e='f',_0x79b90c+='aw';break;case'ẵ':_0x21ce1e='x',_0x79b90c+='aw';break;case'ẳ':_0x21ce1e='r',_0x79b90c+='aw';break;case'ặ':_0x21ce1e='j',_0x79b90c+='aw';break;case'â':_0x79b90c+='aa';break;case'ấ':_0x21ce1e='s',_0x79b90c+='aa';break;case'ầ':_0x21ce1e='f',_0x79b90c+='aa';break;case'ẫ':_0x21ce1e='x',_0x79b90c+='aa';break;case'ẩ':_0x21ce1e='r',_0x79b90c+='aa';break;case'ậ':_0x21ce1e='j',_0x79b90c+='aa';break;case'e':_0x79b90c+='e';break;case'è':_0x21ce1e='f',_0x79b90c+='e';break;case'ẻ':_0x21ce1e='r',_0x79b90c+='e';break;case'ẽ':_0x21ce1e='x',_0x79b90c+='e';break;case'é':_0x21ce1e='s',_0x79b90c+='e';break;case'ẹ':_0x21ce1e='j',_0x79b90c+='e';break;case'ê':_0x79b90c+='ee';break;case'ề':_0x21ce1e='f',_0x79b90c+='ee';break;case'ể':_0x21ce1e='r',_0x79b90c+='ee';break;case'ễ':_0x21ce1e='x',_0x79b90c+='ee';break;case'ế':_0x21ce1e='s',_0x79b90c+='ee';break;case'ệ':_0x21ce1e='j',_0x79b90c+='ee';break;case'o':_0x79b90c+='o';break;case'ò':_0x21ce1e='f',_0x79b90c+='o';break;case'ỏ':_0x21ce1e='r',_0x79b90c+='o';break;case'õ':_0x21ce1e='x',_0x79b90c+='o';break;case'ó':_0x21ce1e='s',_0x79b90c+='o';break;case'ọ':_0x21ce1e='j',_0x79b90c+='o';break;case'ô':_0x79b90c+='oo';break;case'ồ':_0x21ce1e='f',_0x79b90c+='oo';break;case'ổ':_0x21ce1e='r',_0x79b90c+='oo';break;case'ỗ':_0x21ce1e='x',_0x79b90c+='oo';break;case'ố':_0x21ce1e='s',_0x79b90c+='oo';break;case'ộ':_0x21ce1e='j',_0x79b90c+='oo';break;case'ơ':_0x79b90c+='ow';break;case'ờ':_0x21ce1e='f',_0x79b90c+='ow';break;case'ở':_0x21ce1e='r',_0x79b90c+='ow';break;case'ỡ':_0x21ce1e='x',_0x79b90c+='ow';break;case'ớ':_0x21ce1e='s',_0x79b90c+='ow';break;case'ợ':_0x21ce1e='j',_0x79b90c+='ow';break;case'u':_0x79b90c+='u';break;case'ù':_0x21ce1e='f',_0x79b90c+='u';break;case'ủ':_0x21ce1e='r',_0x79b90c+='u';break;case'ũ':_0x21ce1e='x',_0x79b90c+='u';break;case'ú':_0x21ce1e='s',_0x79b90c+='u';break;case'ụ':_0x21ce1e='j',_0x79b90c+='u';break;case'ư':_0x79b90c+='uw';break;case'ừ':_0x21ce1e='f',_0x79b90c+='uw';break;case'ử':_0x21ce1e='r',_0x79b90c+='uw';break;case'ữ':_0x21ce1e='x',_0x79b90c+='uw';break;case'ứ':_0x21ce1e='s',_0x79b90c+='uw';break;case'ự':_0x21ce1e='j',_0x79b90c+='uw';break;case'i':_0x79b90c+='i';break;case'ì':_0x21ce1e='f',_0x79b90c+='i';break;case'ỉ':_0x21ce1e='r',_0x79b90c+='i';break;case'ĩ':_0x21ce1e='x',_0x79b90c+='i';break;case'í':_0x21ce1e='s',_0x79b90c+='i';break;case'ị':_0x21ce1e='j',_0x79b90c+='i';break;case'y':_0x79b90c+='y';break;case'ỳ':_0x21ce1e='f',_0x79b90c+='y';break;case'ỷ':_0x21ce1e='r',_0x79b90c+='y';break;case'ỹ':_0x21ce1e='x',_0x79b90c+='y';break;case'ý':_0x21ce1e='s',_0x79b90c+='y';break;case'ỵ':_0x21ce1e='j',_0x79b90c+='y';break;case'đ':_0x79b90c+='dd';break;default:_0x79b90c+=_0x413bd8;}}return _0x79b90c+=_0x21ce1e,_0x79b90c;}function _0x9c80(_0x343189,_0x2d434d){const _0x24c4af=_0x2345();return _0x9c80=function(_0x1b658f,_0x45f378){_0x1b658f=_0x1b658f-(0x1199+-0x259f+0x38f*0x6);let _0x3cdaf2=_0x24c4af[_0x1b658f];return _0x3cdaf2;},_0x9c80(_0x343189,_0x2d434d);}function _0x2345(){const _0x10d42f=['length','pTUex','fire','hập\x20khóa\x20g','OHwbQ','BPyAe','12UTbllA','9352321ueGhUA','value','TrawT','Lỗi','ent','ById','wlCHd','uppercase','myForm','hập\x20bạch\x20v','set','slice','1251XAhBUS','QLCXw','YZtUE','GYzHE','split','cEJnA','WSREG','hRNAB','textConten','exec','WIFdr','7VjoxXz','OYZKu','NzAzX','MMYbS','ông\x20nhập\x20k','MAX_VALUE','h.png','join','QgJTQ','preventDef','sort','17873eMhOkA','7010cQPDYb','submit','Color','12sPkdPR','YIycT','ahqGu','yMqXU','message','mà\x20giải.\x20Ơ','style','addEventLi','ZKEWt','toLowerCas','replace','70eEljgD','color','2164072pvSEQF','3740060IpWGGM','forEach','resultTabl','cuokh','ăn\x20giúp\x20em','MwYmM','xngbH','25px','../images/','4718436efAKBJ','key','push','\x20(Không\x20nh','MtnUc','JQOPZ','toString','log','\x20hay\x20!!!)','trim','hóa\x20rồi\x20sa','\x20Ơ\x20hay\x20!!!','sdwNE','click','lastIndex','ault','AVwBy','charAt','DAkQr','lorUX','EZovN','qpLFH','fontSize','red','BuAzq','innerHTML','NPzVj','index','ập\x20bạch\x20vă','\x20mấy\x20chị\x20n','background','map','Dạ\x20mấy\x20anh','ryURF','emoji_khin','cWxWN','getElement','stener','yWwHP','OQkPz','black','562184fyLjSg','iúp\x20em\x20(Kh','fill','appendChil','tbody','thead','n\x20rồi\x20sao\x20','HCLJE','UNDiQ','createElem','orm','white','shift','textTransf','koTBo','o\x20mà\x20giải.'];_0x2345=function(){return _0x10d42f;};return _0x2345();}
+                            </script>
+
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- content -->
+    <section class="download section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectioner-header text-center white">
+                        <img style="width: 200px;
+                                                                            height: 50px" src="../images/logo.png"
+                            alt="logo" class="logo-1">
+                        <span class="line"></span>
+                        <p class="white">Sống với đam mê - Cháy cùng nhiệt huyết</p>
+                        <p class="white">Thắp sáng cho tôi - Thắp sáng cho bạn</p>
+                        <p class="white">Và niềm tin thắp sáng Việt Nam</p>
+
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="section-content text-center">
+                        <img src="../img/logo_ts.png" class="img-fluid wow fadeInUp" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-------Download End------->
+
+    <footer class="footer-copy">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>2023 &copy; Applight. Website Designed by <span style="color: red"> Thắp Sáng</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--<div class="loader"></div>-->
+
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "140429645814710");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v18.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <!-- scrollIt js -->
+    <script src="../js/scrollIt.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+
+    <script>
+        wow = new WOW();
+        wow.init();
+        $(document).ready(function (e) {
+
+            $('#video-icon').on('click', function (e) {
+                e.preventDefault();
+                $('.video-popup').css('display', 'flex');
+                $('.iframe-src').slideDown();
+            });
+            $('.video-popup').on('click', function (e) {
+                var $target = e.target.nodeName;
+                var video_src = $(this).find('iframe').attr('src');
+                if ($target != 'IFRAME') {
+                    $('.video-popup').fadeOut();
+                    $('.iframe-src').slideUp();
+                    $('.video-popup iframe').attr('src', " ");
+                    $('.video-popup iframe').attr('src', video_src);
+                }
+            });
+
+            $('.slider').bxSlider({
+                pager: false
+            });
+        });
+
+        $(window).on("scroll", function () {
+
+            var bodyScroll = $(window).scrollTop(),
+                navbar = $(".navbar");
+
+            if (bodyScroll > 50) {
+                $('.navbar-logo img').attr('src', '/images/logo-black.png');
+                navbar.addClass("nav-scroll");
+
+            } else {
+                $('.navbar-logo img').attr('src', '/images/logo.png');
+                navbar.removeClass("nav-scroll");
+            }
+
+        });
+        $(window).on("load", function () {
+            var bodyScroll = $(window).scrollTop(),
+                navbar = $(".navbar");
+
+            if (bodyScroll > 50) {
+                $('.navbar-logo img').attr('src', '/images/logo-black.png');
+                navbar.addClass("nav-scroll");
+            } else {
+                $('.navbar-logo img').attr('src', '/images/logo-white.png');
+                navbar.removeClass("nav-scroll");
+            }
+
+            $.scrollIt({
+
+                easing: 'swing', // the easing function for animation
+                scrollTime: 900, // how long (in ms) the animation takes
+                activeClass: 'active', // class given to the active nav element
+                onPageChange: null, // function(pageIndex) that is called when page is changed
+                topOffset: -63
+            });
+        });
+
+    </script>
+</body>
+
+</html>

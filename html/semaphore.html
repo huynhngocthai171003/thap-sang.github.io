@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semaphore</title>
+    <link rel="icon" href="/img/logo_ts.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <style>
+        #showMoreBtn {
+            background-color: lightcoral;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #showMoreBtn:hover {
+            background-color: #eb2f2d;
+        }
+
+        .dropdown-item.active,
+        .dropdown-item:active {
+            color: #fff;
+            text-decoration: none;
+            background-color: lightcoral !important;
+        }
+
+        .bg-light{
+                background-color: #F69C9B !important;
+                color: white !important;
+            }
+            .selected {
+                background-color: lightcoral;
+                color: white/* Đổi màu nền khi ô được chọn */
+            }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg" id="top">
+        <div class="container"> <a class="navbar-brand navbar-logo" href="../index.html"> <img style="width: 200px;
+                                                                                         height: 50px"
+                    src="images/logo.png" alt="logo" class="logo-1"> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
+                    class="fas fa-bars"></span> </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"> <a class="nav-link" href="../index.html">Trang chủ</a> </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Kỹ năng
+                        </a>
+                        <div class="dropdown-menu list_menu" aria-labelledby="skillDropdown">
+                            <!-- Thêm các mục con vào đây -->
+                            <a class="dropdown-item" href="morse.html">Morse</a>
+                            <hr>
+                            <a class="dropdown-item active" href="semaphore.html">Semaphore</a>
+                            <hr>
+                            <a class="dropdown-item" href="gut_day.html">Gút dây</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mật thư
+                        </a>
+                        <div class="dropdown-menu list_menu" aria-labelledby="skillDropdown">
+                            <!-- Thêm các mục con vào đây -->
+                            <a class="dropdown-item" href="cam_ranh.html">Cam ranh</a>
+                            <hr>
+                            <a class="dropdown-item" href="thay_the.html">Thay thế</a>
+
+                        </div>
+                    </li>
+                    <!--<li class="nav-item"> <a class="nav-link" href="@{/mat_thu}">Mật thư</a> </li>-->
+                    <li class="nav-item"> <a class="nav-link" href="about.html">Về CLB_TS</a> </li>
+
+
+                    <li class="nav-item"> <a class="nav-link" href="contact.html">Liên hệ</a> </li>
+                    <p th:text="${get}"></p>
+                    <li class="nav-item" id="logoutContainer">
+
+                        <button id="logoutButton" class="btn btn-primary customStyle-btn-primary " type="submit"></i>
+                            Đăng xuất </button>
+                    </li>
+                    
+                    <script>
+                        
+                        var _0x71b8=["\x69\x73\x4C\x6F\x67\x67\x65\x64\x49\x6E","\x67\x65\x74\x49\x74\x65\x6D","\x6C\x6F\x67\x6F\x75\x74\x43\x6F\x6E\x74\x61\x69\x6E\x65\x72","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x64\x69\x73\x70\x6C\x61\x79","\x73\x74\x79\x6C\x65","\x62\x6C\x6F\x63\x6B","\x6E\x6F\x6E\x65"];const isLoggedIn=localStorage[_0x71b8[1]](_0x71b8[0]);const logoutContainer=document[_0x71b8[3]](_0x71b8[2]);if(isLoggedIn){logoutContainer[_0x71b8[5]][_0x71b8[4]]= _0x71b8[6]}else {logoutContainer[_0x71b8[5]][_0x71b8[4]]= _0x71b8[7]}
+                    </script>
+
+                    <script>
+
+var _0x19af=["\x63\x6C\x69\x63\x6B","\x69\x73\x4C\x6F\x67\x67\x65\x64\x49\x6E","\x72\x65\x6D\x6F\x76\x65\x49\x74\x65\x6D","\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x2E\x2E\x2F\x69\x6E\x64\x65\x78\x2E\x68\x74\x6D\x6C","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x6C\x6F\x67\x6F\x75\x74\x42\x75\x74\x74\x6F\x6E","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64"];document[_0x19af[8]](_0x19af[7])[_0x19af[6]](_0x19af[0],function(){localStorage[_0x19af[2]](_0x19af[1]);window[_0x19af[4]][_0x19af[3]]= _0x19af[5]})
+                    </script>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <span th:if="${message != null}">
+        
+        <div id="messageElement" style="display: none;">[[${message}]]</div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var messageElement = document.getElementById("messageElement");
+                var message = messageElement.textContent.trim(); 
+
+                Swal.fire({
+                    title: 'Yeah',
+                    text: message,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    </span> -->
+    <!-------Banner Start------->
+    <section class="banner" data-scroll-index='0'>
+        <div class="banner-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <div  class="banner-text">
+                            <h3 style="text-transform: uppercase" class="white">Bảng SEMAPHORE</h3>
+
+                            <h6  class="white"><i>Semaphore - Học cách sử dụng cử chỉ và tín hiệu đèn để truyền thông tin và giao tiếp một cách hiệu quả, giống như những người lính trên tàu chiến thời chiến tranh thế giới.</i></h6>
+
+                            <ul class="banner-text white" style="padding-bottom: 50px">
+                                <li><a href="#about-section"><img src="../images/Claude_Chappe.png" class="wow fadeInUp" data-wow-delay="0.4s"/></a></li>
+                                <!--<li><a href="#"><img src="/images/ken_morse.png" class="wow fadeInUp" data-wow-delay="0.7s"/></a></li>-->
+                                <li><a href="#semaphore"><img src="../images/semaphore.png" class="wow fadeInUp" data-wow-delay="0.7s"/></a></li>
+
+                            </ul>
+                            <script>
+                                $(document).ready(function () {
+                                    $('a[href^="#"]').on('click', function (e) {
+                                        e.preventDefault();
+
+                                        var target = this.hash;
+                                        var $target = $(target);
+
+                                        // Thời gian lướt mượt (milliseconds)
+                                        var scrollTime = 1000;
+
+                                        $('html, body').animate({
+                                            'scrollTop': $target.offset().top
+                                        }, scrollTime, 'swing');
+                                    });
+                                });
+                            </script>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12"> <img src="../img/logo_ts.png" class="img-fluid wow fadeInUp" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="svg-wave"> <img class="svg-hero" src="../images/applight-wave.svg"> </span>
+    </section>
+
+    <!-- content -->
+
+    <div id="about-section" class="container" style="margin-top: 48px ;margin-bottom: 48px ">
+        <div class="row">
+            <div style="margin-bottom:40px " class="sectioner-header text-center">
+                <h3>Tiểu Sử</h3>
+                <span class="line"></span>
+
+            </div>
+            <div  class="col-lg-5 col-md-6">
+                <div class="mb-2">
+                    <img class="w-100" style="width: 445px; height: 500px" src="/images/img_semaphore.png" alt="">
+                </div>
+                <div class="mb-2 d-flex">
+                    <h4 class="font-weight-normal">Claude Chappe</h4>
+
+                </div>
+                <div class="mb-2">
+                    <ul class="list-unstyled">
+                        <li class="media">
+                            <span class="w-25 text-black font-weight-normal">Nghề:</span>
+                            <label class="media-body">Nhà phát minh</label>
+                        </li>
+                        <li class="media">
+                            <span class="w-25 text-black font-weight-normal">Sinh: </span>
+                            <label class="media-body">25/12/1763</label>
+                        </li>
+                        <li class="media">
+                            <span class="w-25 text-black font-weight-normal">Mất: </span>
+                            <label class="media-body">23/01/1805 (41 tuổi)</label>
+                        </li>
+                        <li class="media">
+                            <span class="w-25 text-black font-weight-normal">Được biết đến: </span>
+                            <label class="media-body">Sự phát minh hệ thống tín hiệu Semaphore</label>
+                        </li>
+                        <!--                                <li class="media">
+                                                            <span class="w-25 text-black font-weight-normal">Location: </span>
+                                                            <label class="media-body">5557 Cottey St Fort Worth, Texas(TX), 76119, New York, USA</label>
+                                                        </li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-6 pl-xl-3">
+                <h5 class="font-weight-normal">Claude Chappe</h5>
+                <p>Claude Chappe (1763-1805) là một nhà phát minh người Pháp nổi tiếng, được biết đến chủ yếu với sáng chế và phát triển hệ thống Semaphore, một hệ thống truyền tin từ xa sử dụng cờ hiệu để giao tiếp.
+                </p>
+                <div class="my-2 bg-light p-2">
+                    <p class="font-italic mb-0">Sinh Ra và Học Vấn:</p>
+                </div>
+                <ul class="list list-unstyled mb-3">
+                    <li class="text-secondary font-weight-normal mb-1">
+                        <span class="ti-arrow-right pr-1 text-primary"></span>
+                        Claude Chappe sinh ngày 25 tháng 12 năm 1763 tại Brûlon, một thị trấn nhỏ ở tỉnh Sarthe, Pháp. Ông học tại trường tuổi thơ và sau đó theo học tại Collège de Navarre ở Paris.
+                    </li>
+
+                </ul>
+
+                <div class="my-2 bg-light p-2">
+                    <p class="font-italic mb-0">Hệ Thống Semaphore:</p>
+                </div>
+                <ul class="list list-unstyled mb-3">
+                    <li class="text-secondary font-weight-normal mb-1">
+                        <span class="ti-arrow-right pr-1 text-primary"></span>
+                        Ông và em trai của mình, Ignace Chappe, là những người sáng chế và phát triển hệ thống Semaphore vào cuối thế kỷ 18. Hệ thống này sử dụng các cấu trúc cứng, thường là các cột cao, trên đỉnh mỗi cột có một cơ cấu cần đổi vị trí. Những cơ cấu này được điều khiển bởi các nhân viên và có thể xoay để tạo ra các ký hiệu hoặc cờ hiệu khác nhau.
+                    </li>
+
+                </ul>
+
+                <div class="my-2 bg-light p-2">
+                    <p class="font-italic mb-0">Sử Dụng Semaphore:</p>
+                </div>
+                <ul class="list list-unstyled mb-3">
+                    <li class="text-secondary font-weight-normal mb-1">
+                        <span class="ti-arrow-right pr-1 text-primary"></span>
+                        Semaphore cho phép truyền tin từ xa bằng cách sử dụng ngôn ngữ hình ảnh thông qua các cơ cấu và cờ hiệu. Điều này đã giúp cải thiện việc truyền tải thông tin và liên lạc trong quân đội, quản lý giao thông, và các ứng dụng khác. Semaphore đã trở thành một phần quan trọng của hệ thống giao tiếp và liên lạc tại thời điểm đó.
+                    </li>
+
+                </ul>
+
+                <div class="my-2 bg-light p-2">
+                    <p class="font-italic mb-0">Sự Nghiệp và Thành Tựu:</p>
+                </div>
+                <ul class="list list-unstyled mb-3">
+                    <li class="text-secondary font-weight-normal mb-1">
+                        <span class="ti-arrow-right pr-1 text-primary"></span>
+                        Claude Chappe và Ignace Chappe đã phát triển hệ thống Semaphore và đặt nó vào sử dụng rộng rãi tại Pháp. Hệ thống này được mở rộng và phát triển trong nhiều nước khác, giúp cải thiện liên lạc và giao tiếp trên toàn thế giới.
+                    </li>
+
+                </ul>
+
+
+
+                <p>Claude Chappe và sự phát minh Semaphore của ông đã có ảnh hưởng lớn đến lĩnh vực truyền tin từ xa và giao tiếp, đặc biệt trong thời kỳ trước sự xuất hiện của công nghệ điện tử.
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <section id="semaphore" class="about section-padding prelative" >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectioner-header text-center">
+                        <h3>Bảng SEMAPHORE</h3>
+                        <span class="line"></span>                               
+                    </div>
+                    <div class="section-content text-center">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <table class="table table-bordered">
+                                    <thead style="background-color: #F38887">
+                                        <tr>
+                                            <th style="color: white" scope="col" colspan="4">CHỮ & SỐ</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">A - 1</th>
+                                           
+                                            <td><img style="width: 80px" src="/semaphore/a.png" /></td>
+                                            <th scope="row">O</th>
+                                            <td><img style="width: 80px" src="/semaphore/o.png" /></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">B - 2</th>
+                                            
+                                            <td><img style="width: 80px" src="/semaphore/b.png" /></td>
+                                            <th scope="row">P</th>
+                                            <td><img style="width: 80px" src="/semaphore/p.png" /></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">C - 3</th>
+                                            <td><img style="width: 80px" src="/semaphore/c.png" /></td>
+                                            <th scope="row">Q</th>
+                                            <td><img style="width: 80px" src="/semaphore/q.png" /></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">D - 4</th>
+                                            <td><img style="width: 80px" src="/semaphore/d.png" /></td>
+                                            <th scope="row">R</th>
+                                            <td><img style="width: 80px" src="/semaphore/r.png" /></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">E - 5</th>
+                                            <td><img style="width: 80px" src="/semaphore/e.png" /></td>
+                                            <th scope="row">S</th>
+                                            <td><img style="width: 80px" src="/semaphore/s.png" /></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">F - 6</th>
+                                            <td><img style="width: 80px" src="/semaphore/f.png" /></td>
+                                            <th scope="row">T</th>
+                                            <td><img style="width: 80px" src="/semaphore/t.png" /></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">G - 7</th>
+                                            <td><img style="width: 80px" src="/semaphore/g.png" /></td>
+                                            <th scope="row">U</th>
+                                            <td><img style="width: 80px" src="/semaphore/u.png" /></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">H - 8</th>
+                                            <td><img style="width: 80px" src="/semaphore/h.png" /></td>
+                                            <th scope="row">V</th>
+                                            <td><img style="width: 80px" src="/semaphore/v.png" /></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">I -9</th>
+                                            <td><img style="width: 80px" src="/semaphore/i.png" /></td>
+                                            <th scope="row">W</th>
+                                            <td><img style="width: 80px" src="/semaphore/w.png" /></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">J - 0</th>
+                                            <td><img style="width: 80px" src="/semaphore/j.png" /></td>
+                                            <th scope="row">X</th>
+                                            <td><img style="width: 80px" src="/semaphore/x.png" /></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">K</th>
+                                            <td><img style="width: 80px" src="/semaphore/k.png" /></td>
+                                            <th scope="row">Y</th>
+                                            <td><img style="width: 80px" src="/semaphore/y.png" /></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">L</th>
+                                            <td><img style="width: 80px" src="/semaphore/l.png" /></td>
+                                            <th scope="row">Z</th>
+                                            <td><img style="width: 80px" src="/semaphore/z.png" /></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">M</th>
+                                            <td><img style="width: 80px" src="/semaphore/m.png" /></td>
+                                            <th scope="row">Số</th>
+                                            <td><img style="width: 80px" src="/semaphore/number.png" /></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">N</th>
+                                            <td><img style="width: 80px" src="/semaphore/n.png" /></td>
+                                            
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                            <div class="col-md-4">
+                                <table class="table table-bordered">
+                                    <thead style="background-color: #F38887">
+                                        <tr>
+                                            <th scope="col" colspan="2" style="color: white" >ĐẶT BIỆT</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                         <tr>
+                                            
+                                            <th scope="row">Lỗi/Chú ý</th>
+                                            <td><img style="width: 80px" src="/semaphore/error_attention.png" /></td>
+
+                                        </tr>
+                                        <tr>
+                                            
+                                            <th scope="row">Xóa</th>
+                                            <td><img style="width: 80px" src="/semaphore/cancel.png" /></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+                        </div>
+
+                        <!--                                <a href="#" class="about-btn">Xem thêm</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- content -->
+    <section class="download section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectioner-header text-center white">
+                        <img style="width: 200px;
+                                                                            height: 50px" src="../images/logo.png"
+                            alt="logo" class="logo-1">
+                        <span class="line"></span>
+                        <p class="white">Sống với đam mê - Cháy cùng nhiệt huyết</p>
+                        <p class="white">Thắp sáng cho tôi - Thắp sáng cho bạn</p>
+                        <p class="white">Và niềm tin thắp sáng Việt Nam</p>
+
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="section-content text-center">
+                        <img src="../img/logo_ts.png" class="img-fluid wow fadeInUp" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-------Download End------->
+
+    <footer class="footer-copy">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>2023 &copy; Applight. Website Designed by <span style="color: red"> Thắp Sáng</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--<div class="loader"></div>-->
+
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "140429645814710");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v18.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <!-- scrollIt js -->
+    <script src="../js/scrollIt.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+
+    <script>
+        wow = new WOW();
+        wow.init();
+        $(document).ready(function (e) {
+
+            $('#video-icon').on('click', function (e) {
+                e.preventDefault();
+                $('.video-popup').css('display', 'flex');
+                $('.iframe-src').slideDown();
+            });
+            $('.video-popup').on('click', function (e) {
+                var $target = e.target.nodeName;
+                var video_src = $(this).find('iframe').attr('src');
+                if ($target != 'IFRAME') {
+                    $('.video-popup').fadeOut();
+                    $('.iframe-src').slideUp();
+                    $('.video-popup iframe').attr('src', " ");
+                    $('.video-popup iframe').attr('src', video_src);
+                }
+            });
+
+            $('.slider').bxSlider({
+                pager: false
+            });
+        });
+
+        $(window).on("scroll", function () {
+
+            var bodyScroll = $(window).scrollTop(),
+                navbar = $(".navbar");
+
+            if (bodyScroll > 50) {
+                $('.navbar-logo img').attr('src', '/images/logo-black.png');
+                navbar.addClass("nav-scroll");
+
+            } else {
+                $('.navbar-logo img').attr('src', '/images/logo.png');
+                navbar.removeClass("nav-scroll");
+            }
+
+        });
+        $(window).on("load", function () {
+            var bodyScroll = $(window).scrollTop(),
+                navbar = $(".navbar");
+
+            if (bodyScroll > 50) {
+                $('.navbar-logo img').attr('src', '/images/logo-black.png');
+                navbar.addClass("nav-scroll");
+            } else {
+                $('.navbar-logo img').attr('src', '/images/logo-white.png');
+                navbar.removeClass("nav-scroll");
+            }
+
+            $.scrollIt({
+
+                easing: 'swing', // the easing function for animation
+                scrollTime: 900, // how long (in ms) the animation takes
+                activeClass: 'active', // class given to the active nav element
+                onPageChange: null, // function(pageIndex) that is called when page is changed
+                topOffset: -63
+            });
+        });
+
+    </script>
+</body>
+
+</html>

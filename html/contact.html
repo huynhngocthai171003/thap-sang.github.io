@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ</title>
+    <link rel="icon" href="/img/logo_ts.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <style>
+        #showMoreBtn {
+            background-color: lightcoral;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #showMoreBtn:hover {
+            background-color: #eb2f2d;
+        }
+
+        .dropdown-item.active,
+        .dropdown-item:active {
+            color: #fff;
+            text-decoration: none;
+            background-color: lightcoral !important;
+        }
+
+        .bg-light {
+            background-color: #F69C9B !important;
+            color: white !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg" id="top">
+        <div class="container"> <a class="navbar-brand navbar-logo" href="../index.html"> <img style="width: 200px;
+                                                                                         height: 50px"
+                    src="images/logo.png" alt="logo" class="logo-1"> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
+                    class="fas fa-bars"></span> </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"> <a class="nav-link" href="../index.html">Trang chủ</a> </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Kỹ năng
+                        </a>
+                        <div class="dropdown-menu list_menu" aria-labelledby="skillDropdown">
+                            <!-- Thêm các mục con vào đây -->
+                            <a class="dropdown-item" href="morse.html">Morse</a>
+                            <hr>
+                            <a class="dropdown-item " href="semaphore.html">Semaphore</a>
+                            <hr>
+                            <a class="dropdown-item" href="gut_day.html">Gút dây</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mật thư
+                        </a>
+                        <div class="dropdown-menu list_menu" aria-labelledby="skillDropdown">
+                            <!-- Thêm các mục con vào đây -->
+                            <a class="dropdown-item " href="cam_ranh.html">Cam ranh</a>
+                            <hr>
+                            <a class="dropdown-item" href="thay_the.html">Thay thế</a>
+
+                        </div>
+                    </li>
+                    <!--<li class="nav-item"> <a class="nav-link" href="@{/mat_thu}">Mật thư</a> </li>-->
+                    <li class="nav-item"> <a class="nav-link" href="about.html">Về CLB_TS</a> </li>
+
+
+                    <li class="nav-item"> <a class="nav-link selected" href="contact.html">Liên hệ</a> </li>
+                    <p th:text="${get}"></p>
+                    <li class="nav-item" id="logoutContainer">
+
+                        <button id="logoutButton" class="btn btn-primary customStyle-btn-primary " type="submit"></i>
+                            Đăng xuất </button>
+                    </li>
+                    
+                    <script>
+                        
+                        var _0x71b8=["\x69\x73\x4C\x6F\x67\x67\x65\x64\x49\x6E","\x67\x65\x74\x49\x74\x65\x6D","\x6C\x6F\x67\x6F\x75\x74\x43\x6F\x6E\x74\x61\x69\x6E\x65\x72","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x64\x69\x73\x70\x6C\x61\x79","\x73\x74\x79\x6C\x65","\x62\x6C\x6F\x63\x6B","\x6E\x6F\x6E\x65"];const isLoggedIn=localStorage[_0x71b8[1]](_0x71b8[0]);const logoutContainer=document[_0x71b8[3]](_0x71b8[2]);if(isLoggedIn){logoutContainer[_0x71b8[5]][_0x71b8[4]]= _0x71b8[6]}else {logoutContainer[_0x71b8[5]][_0x71b8[4]]= _0x71b8[7]}
+                    </script>
+
+                    <script>
+
+var _0x19af=["\x63\x6C\x69\x63\x6B","\x69\x73\x4C\x6F\x67\x67\x65\x64\x49\x6E","\x72\x65\x6D\x6F\x76\x65\x49\x74\x65\x6D","\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x2E\x2E\x2F\x69\x6E\x64\x65\x78\x2E\x68\x74\x6D\x6C","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x6C\x6F\x67\x6F\x75\x74\x42\x75\x74\x74\x6F\x6E","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64"];document[_0x19af[8]](_0x19af[7])[_0x19af[6]](_0x19af[0],function(){localStorage[_0x19af[2]](_0x19af[1]);window[_0x19af[4]][_0x19af[3]]= _0x19af[5]})
+                    </script>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <span th:if="${message != null}">
+        
+        <div id="messageElement" style="display: none;">[[${message}]]</div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var messageElement = document.getElementById("messageElement");
+                var message = messageElement.textContent.trim(); 
+
+                Swal.fire({
+                    title: 'Yeah',
+                    text: message,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    </span> -->
+    <!-------Banner Start------->
+    <section class="banner" data-scroll-index='0'>
+        <div class="banner-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <div class="banner-text">
+                            <h3 style="text-transform: uppercase" class="white">Câu lạc bộ kỹ năng - Thắp Sáng</h3>
+
+                            <h6 class="white"><i>Sống với đam mê - Cháy cùng nhiệt huyết</i></h6>
+
+                            <ul class="banner-text white" style="padding-bottom: 50px">
+                                <li><a href="../html/semaphore.html"><img src="/images/semaphore.png"
+                                            class="wow fadeInUp" data-wow-delay="0.4s" /></a></li>
+                                <li><a href="../html/morse.html"><img src="/images/morse.png" class="wow fadeInUp"
+                                            data-wow-delay="0.7s" /></a></li>
+                                <li><a href="../html/gut_day.html"><img src="/images/gutday.png" class="wow fadeInUp"
+                                            data-wow-delay="0.9s" /></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12"> <img src="../img/logo_ts.png" class="img-fluid wow fadeInUp" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="svg-wave"> <img class="svg-hero" src="../images/applight-wave.svg"> </span>
+    </section>
+
+    <!-- content -->
+
+    <section class="contact section-padding" data-scroll-index='6'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectioner-header text-center">
+                        <h3>Liên hệ với chúng tôi</h3>
+                        <span class="line"></span>
+                        <p>Liên Hệ Với Chúng Tôi - Chúng Tôi Rất Mong Muốn Nghe Thông Tin Của Bạn!.</p>
+                    </div>
+                    <div class="section-content">
+                        <div class="row">
+                            <!-- <div class="col-sm-12 col-md-12 col-lg-7">
+                                <form id="contact_form">
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="text" id="name" class="form-input w-100" name="full_name"
+                                                placeholder="Họ và Tên">
+                                        </div>
+                                        <div class="col">
+                                            <input type="email" id="email" class="form-input w-100" name="email"
+                                                placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <input type="text" id="subject" class="form-input w-100" name="subject"
+                                        placeholder="Tiêu đề">
+                                    <textarea class="form-input w-100" id="message" placeholder="Nội dung"
+                                        name="message"></textarea>
+                                    <button class="btn-grad w-100 text-uppercase" type="submit" id="btn"
+                                        name="button">gửi</button>
+                                </form>
+                            </div> -->
+
+
+                            <div class="col-md-12">
+
+                                <div class="contact-info white">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="contact-item media"> <i
+                                                    class="fa fa-map-marker-alt media-left media-right-margin"></i>
+                                                <div class="media-body">
+                                                    <p class="text-uppercase">Địa chỉ: Diên Điền, Diên Khánh, Khánh Hòa
+                                                    </p>
+
+                                                </div>
+                                            </div>
+                                            <div class="contact-item media"> <i
+                                                    class="fa fa-mobile media-left media-right-margin"></i>
+                                                <div class="media-body">
+                                                    <p class="text-uppercase">Số điện thoại: 0347878093</p>
+
+                                                </div>
+                                            </div>
+                                            <div class="contact-item media"> <i
+                                                    class="fa fa-envelope media-left media-right-margin"></i>
+                                                <div class="media-body">
+                                                    <p class="text-uppercase">E-mail: <a class="text-white"
+                                                            href="mailto:clbts130717@gmail.com">clbts130717@gmail.com</a>
+                                                    </p>
+
+                                                </div>
+                                            </div>
+                                            <div class="contact-item media"> <i
+                                                    class="fa fa-clock media-left media-right-margin"></i>
+                                                <div class="media-body">
+                                                    <p class="text-uppercase">Hồi đáp: Chúng tôi sẽ liên hệ lại sớm nhất
+                                                    </p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img style="max-width: 100%;" src="../icon/icon_thanks.png" alt="logo" class="logo-1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="download section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectioner-header text-center white">
+                        <img style="width: 200px;
+                                                                            height: 50px" src="../images/logo.png"
+                            alt="logo" class="logo-1">
+                        <span class="line"></span>
+                        <p class="white">Sống với đam mê - Cháy cùng nhiệt huyết</p>
+                        <p class="white">Thắp sáng cho tôi - Thắp sáng cho bạn</p>
+                        <p class="white">Và niềm tin thắp sáng Việt Nam</p>
+
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="section-content text-center">
+                        <img src="../img/logo_ts.png" class="img-fluid wow fadeInUp" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-------Download End------->
+
+    <footer class="footer-copy">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>2023 &copy; Applight. Website Designed by <span style="color: red"> Thắp Sáng</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--<div class="loader"></div>-->
+
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "140429645814710");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v18.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <!-- scrollIt js -->
+    <script src="../js/scrollIt.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/contact.js"></script>
+
+
+    <script>
+        wow = new WOW();
+        wow.init();
+        $(document).ready(function (e) {
+
+            $('#video-icon').on('click', function (e) {
+                e.preventDefault();
+                $('.video-popup').css('display', 'flex');
+                $('.iframe-src').slideDown();
+            });
+            $('.video-popup').on('click', function (e) {
+                var $target = e.target.nodeName;
+                var video_src = $(this).find('iframe').attr('src');
+                if ($target != 'IFRAME') {
+                    $('.video-popup').fadeOut();
+                    $('.iframe-src').slideUp();
+                    $('.video-popup iframe').attr('src', " ");
+                    $('.video-popup iframe').attr('src', video_src);
+                }
+            });
+
+            $('.slider').bxSlider({
+                pager: false
+            });
+        });
+
+        $(window).on("scroll", function () {
+
+            var bodyScroll = $(window).scrollTop(),
+                navbar = $(".navbar");
+
+            if (bodyScroll > 50) {
+                $('.navbar-logo img').attr('src', '/images/logo-black.png');
+                navbar.addClass("nav-scroll");
+
+            } else {
+                $('.navbar-logo img').attr('src', '/images/logo.png');
+                navbar.removeClass("nav-scroll");
+            }
+
+        });
+        $(window).on("load", function () {
+            var bodyScroll = $(window).scrollTop(),
+                navbar = $(".navbar");
+
+            if (bodyScroll > 50) {
+                $('.navbar-logo img').attr('src', '/images/logo-black.png');
+                navbar.addClass("nav-scroll");
+            } else {
+                $('.navbar-logo img').attr('src', '/images/logo-white.png');
+                navbar.removeClass("nav-scroll");
+            }
+
+            $.scrollIt({
+
+                easing: 'swing', // the easing function for animation
+                scrollTime: 900, // how long (in ms) the animation takes
+                activeClass: 'active', // class given to the active nav element
+                onPageChange: null, // function(pageIndex) that is called when page is changed
+                topOffset: -63
+            });
+        });
+
+    </script>
+</body>
+
+</html>
