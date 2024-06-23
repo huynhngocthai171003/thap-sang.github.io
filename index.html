@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+   
+    <link rel="icon" href="/img/logo_ts.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+
+    <style>
+        #showMoreBtn {
+            background-color: lightcoral;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #showMoreBtn:hover {
+            background-color: #eb2f2d;
+        }
+
+        .dropdown-item.active,
+        .dropdown-item:active {
+            color: #fff;
+            text-decoration: none;
+            background-color: lightcoral !important;
+        }
+
+        .testimonial {
+            margin: 0 10px;
+        }
+
+        .testimonial .testimonial-content {
+            margin: 20px 0 50px 0;
+            position: relative;
+        }
+
+        .testimonial .testimonial-content:after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            border-top: 20px solid #EF6A5A;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            margin: 0 auto;
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+        }
+
+        .testimonial .description {
+            padding: 25px 35px;
+            margin: 0;
+            background: #EF6A5A;
+            border-radius: 15px;
+            font-size: 20px;
+            color: #fff;
+            position: relative;
+        }
+
+        .testimonial .description:before,
+        .testimonial .description:after {
+            /* content: "\f2b9"; */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            border-radius: 8px;
+            text-align: center;
+            background: #EF6A5A;
+            position: absolute;
+        }
+
+        .testimonial .description:before {
+            content: "\f10d";
+            top: -18px;
+            left: 25px;
+        }
+
+        .testimonial .description:after {
+            content: "\f10e";
+            bottom: -18px;
+            right: 25px;
+        }
+
+        .testimonial .testimonial-profile {
+            display: table;
+            padding: 15px;
+            border: 1px solid #EF6A5A;
+            border-radius: 20px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial .pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 1px solid #EF6A5A;
+            float: left;
+            overflow: hidden;
+        }
+
+        .testimonial .title {
+            display: inline-block;
+            margin: 0 0 0 30px;
+            font-size: 19px;
+            font-weight: bold;
+            color: #EF6A5A;
+            position: relative;
+            top: 22px;
+        }
+
+        .testimonial .title:before {
+            content: "";
+            width: 1px;
+            height: 70px;
+            background: #EF6A5A;
+            position: absolute;
+            top: -8px;
+            left: -15px;
+        }
+
+        .testimonial .post {
+            display: block;
+            font-size: 14px;
+            font-weight: normal;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        .owl-theme .owl-controls {
+            margin-top: 30px;
+        }
+
+        .owl-theme .owl-controls .owl-page span {
+            background: transparent;
+            border: 1px solid #EF6A5A;
+            opacity: 1;
+        }
+
+        .owl-theme .owl-controls .owl-page.active span {
+            background: #EF6A5A;
+            border: 1px solid #EF6A5A;
+        }
+
+        @media only screen and (max-width: 479px) {
+            .testimonial .description {
+                padding: 20px;
+                font-size: 16px;
+            }
+
+            .testimonial .testimonial-profile {
+                padding: 10px;
+            }
+
+            .testimonial .title {
+                font-size: 16px;
+            }
+
+            .testimonial .post {
+                font-size: 13px;
+            }
+        }
+
+        .modal-header{
+            background-color: #EF6A5A !important;
+            color: white;
+        }
+
+        
+
+        
+    </style>
+
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg" id="top">
+        <div class="container"> <a class="navbar-brand navbar-logo" href="../index.html"> <img style="width: 200px;
+                                                                                         height: 50px"
+                    src="images/logo.png" alt="logo" class="logo-1"> </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
+                    class="fas fa-bars"></span> </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"> <a class="nav-link selected" href="../index.html">Trang chủ</a> </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Kỹ năng
+                        </a>
+                        <div class="dropdown-menu list_menu" aria-labelledby="skillDropdown">
+                            <!-- Thêm các mục con vào đây -->
+                            <a class="dropdown-item" href="html/morse.html">Morse</a>
+                            <hr>
+                            <a class="dropdown-item" href="html/semaphore.html">Semaphore</a>
+                            <hr>
+                            <a class="dropdown-item" href="html/gut_day.html">Gút dây</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="skillDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mật thư
+                        </a>
+                        <div class="dropdown-menu list_menu" aria-labelledby="skillDropdown">
+                            <!-- Thêm các mục con vào đây -->
+                            <a class="dropdown-item" href="html/cam_ranh.html">Cam ranh</a>
+                            <hr>
+                            <a class="dropdown-item" href="html/thay_the.html">Thay thế</a>
+
+                        </div>
+                    </li>
+                    <!--<li class="nav-item"> <a class="nav-link" href="@{/mat_thu}">Mật thư</a> </li>-->
+                    <li class="nav-item"> <a class="nav-link" href="html/about.html">Về CLB_TS</a> </li>
+
+
+                    <li class="nav-item"> <a class="nav-link" href="html/contact.html">Liên hệ</a> </li>
+                    <p th:text="${get}"></p>
+                    <li class="nav-item" id="logoutContainer">
+
+                        <button id="logoutButton" class="btn btn-primary customStyle-btn-primary " type="submit"></i>
+                            Đăng xuất </button>
+                    </li>
+                    <script>
+
+                        var _0xf147 = ["\x69\x73\x4C\x6F\x67\x67\x65\x64\x49\x6E", "\x67\x65\x74\x49\x74\x65\x6D", "\x6C\x6F\x67\x6F\x75\x74\x43\x6F\x6E\x74\x61\x69\x6E\x65\x72", "\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64", "\x64\x69\x73\x70\x6C\x61\x79", "\x73\x74\x79\x6C\x65", "\x62\x6C\x6F\x63\x6B", "\x6E\x6F\x6E\x65"]; const isLoggedIn = localStorage[_0xf147[1]](_0xf147[0]); const logoutContainer = document[_0xf147[3]](_0xf147[2]); if (isLoggedIn) { logoutContainer[_0xf147[5]][_0xf147[4]] = _0xf147[6] } else { logoutContainer[_0xf147[5]][_0xf147[4]] = _0xf147[7] }
+                    </script>
+
+                    <script>
+
+                        var _0xe164 = ["\x63\x6C\x69\x63\x6B", "\x69\x73\x4C\x6F\x67\x67\x65\x64\x49\x6E", "\x72\x65\x6D\x6F\x76\x65\x49\x74\x65\x6D", "\x68\x72\x65\x66", "\x6C\x6F\x63\x61\x74\x69\x6F\x6E", "\x69\x6E\x64\x65\x78\x2E\x68\x74\x6D\x6C", "\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72", "\x6C\x6F\x67\x6F\x75\x74\x42\x75\x74\x74\x6F\x6E", "\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64"]; document[_0xe164[8]](_0xe164[7])[_0xe164[6]](_0xe164[0], function () { localStorage[_0xe164[2]](_0xe164[1]); window[_0xe164[4]][_0xe164[3]] = _0xe164[5] })
+
+                    </script>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <span th:if="${message != null}">
+        
+        <div id="messageElement" style="display: none;">[[${message}]]</div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var messageElement = document.getElementById("messageElement");
+                var message = messageElement.textContent.trim(); 
+
+                Swal.fire({
+                    title: 'Yeah',
+                    text: message,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    </span> -->
+    <!-------Banner Start------->
+    <section class="banner" data-scroll-index='0'>
+        <div class="banner-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <div class="banner-text">
+                            <h3 style="text-transform: uppercase" class="white">Câu lạc bộ kỹ năng - Thắp Sáng</h3>
+
+                            <h6 class="white"><i>Sống với đam mê - Cháy cùng nhiệt huyết</i></h6>
+
+                            <ul class="banner-text white" style="padding-bottom: 50px">
+                                <li><a href="../html/semaphore.html"><img src="/images/semaphore.png"
+                                            class="wow fadeInUp" data-wow-delay="0.4s" /></a></li>
+                                <li><a href="../html/morse.html"><img src="/images/morse.png" class="wow fadeInUp"
+                                            data-wow-delay="0.7s" /></a></li>
+                                <li><a href="../html/gut_day.html"><img src="/images/gutday.png" class="wow fadeInUp"
+                                            data-wow-delay="0.9s" /></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12"> <img src="/img/logo_ts.png" class="img-fluid wow fadeInUp" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="svg-wave"> <img class="svg-hero" src="/images/applight-wave.svg"> </span>
+    </section>
+
+    <!-------Banner End------->
+
+    <!-------About End------->
+
+    <section class="about section-padding prelative" data-scroll-index='1'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectioner-header text-center">
+                        <h3>Thắp Sáng</h3>
+                        <span class="line"></span>
+                        <p>CLB Kỹ năng Thắp Sáng đã được thành lập vào ngày 13/7/2017, dưới sự chủ nhiệm của anh Phan
+                            Quốc Cường. Chúng tôi tự hào là một nơi thú vị và sáng tạo, nơi bạn có cơ hội khám phá và
+                            phát triển các kỹ năng độc đáo như Semaphore, Morse, Gút dây và nhiều kỹ năng khác. Chúng
+                            tôi là một cộng đồng đam mê đến từ nhiều lĩnh vực và độ tuổi khác nhau, nhưng chúng tôi có
+                            điểm chung là niềm đam mê với việc học hỏi và thực hành các kỹ năng đặc biệt.
+                        </p>
+                    </div>
+                    <div class="section-content text-center">
+                        <div class="row">
+                            <div class="col-md-4">
+
+                                <div class="icon-box wow fadeInUp" data-wow-delay="0.2s"><a
+                                        href="html/semaphore.html"><img src="images/semaphore.png"
+                                            class="wow fadeInUp ky_nang" data-wow-delay="0.4s" /></a> </i>
+                                    <h5>Semaphore</h5>
+                                    <p><b>Semaphore</b> - Học cách sử dụng cử chỉ và tín hiệu đèn để truyền thông tin và
+                                        giao tiếp một cách hiệu quả, giống như những người lính trên tàu chiến thời
+                                        chiến tranh thế giới.</p>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="icon-box wow fadeInUp" data-wow-delay="0.4s"><a href="html/morse.html"><img
+                                            src="images/morse.png" class="wow fadeInUp ky_nang"
+                                            data-wow-delay="0.7s" /></a></i>
+                                    <h5>Morse</h5>
+                                    <p><b>Morse</b> - Khám phá thế giới của ngôn ngữ Morse, hệ thống truyền thông bằng
+                                        âm thanh và ánh sáng, và làm quen với việc gửi và nhận các thông điệp bằng mã
+                                        Morse.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"><img src="images/gutday.png"
+                                        class="wow fadeInUp ky_nang" data-wow-delay="0.9s" /></i>
+                                    <h5>Gút dây</h5>
+                                    <p><b>Gút dây</b> - Học cách thắt nút, làm việc với dây thừng, và tạo ra các giải
+                                        pháp sáng tạo từ vật liệu đơn giản như dây thừng.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/html/about.html" class="about-btn">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-------About End------->
+
+    <!-------Video Start------->
+    <section class="video-section prelative text-center white">
+        <div class="section-padding video-overlay">
+            <div class="container">
+                <h3>XEM NGAY</h3>
+                <i class="fa fa-play" id="video-icon" aria-hidden="true"></i>
+                <div class="video-popup">
+                    <div class="video-src">
+                        <div class="iframe-src">
+                            https://youtu.be/hPEdmP8nYfY?si=UJvL4GSa5X4yZ7tP
+                            <iframe src="https://www.youtube.com/embed/hPEdmP8nYfY" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-------Video End------->
+
+
+
+    <!-------Team Start------->
+    <section class="contact section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectioner-header text-center">
+                        <h3>Chủ nhiệm </h3>
+                        <span class="line"></span>
+                        <p style="font-size: 50px; color: #eb2f2d">PHAN QUỐC CƯỜNG</p>
+                    </div>
+                    <div class="section-content">
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-12 col-lg-7 team-detail wow bounce" data-wow-delay="0.2s">
+                                <!--<img src="/images/cn_clb.png" class="img-fluid"/>-->
+                                <div class="grid-wrapper">
+                                    <div>
+                                        <img src="images/cn_clb.png" alt="" />
+                                    </div>
+                                    <div>
+                                        <img src="images/cn_clb1.png" alt="" />
+                                    </div>
+                                    <div class="tall">
+                                        <img src="images/cn_clb3.png" alt="" />
+                                    </div>
+
+                                    <div>
+                                        <img src="images/cn_clb2.png" alt="" />
+                                    </div>
+
+                                    <div>
+                                        <img src="images/cn_clb4.png" alt="" />
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-5">
+                                <div class="contact-info white">
+                                    <div class="contact-item media"> <i
+                                            class="fa fa-map-marker-alt media-left media-right-margin"></i>
+                                        <div class="media-body">
+                                            <p class="text-uppercase">Họ và Tên</p>
+                                            <p class="text-uppercase">Phan Quốc Cường</p>
+                                        </div>
+                                    </div>
+                                    <div class="contact-item media"> <i
+                                            class="fa fa-mobile media-left media-right-margin"></i>
+                                        <div class="media-body">
+                                            <p class="text-uppercase">Số điện thoại </p>
+                                            <p class="text-uppercase"><a class="text-white"
+                                                    href="tel:0347878093">0347878093</a> </p>
+                                        </div>
+                                    </div>
+                                    <div class="contact-item media"> <i
+                                            class="fa fa-envelope media-left media-right-margin"></i>
+                                        <div class="media-body">
+                                            <p class="text-uppercase">E-mail</p>
+                                            <p class="" style="font-size: 12px"><a class="text-white"
+                                                    href="mailto:phanquoccuong16102000@gmail.com">phanquoccuong16102000@gmail.com
+                                                </a> </p>
+                                        </div>
+                                    </div>
+                                    <div class="contact-item media"> <i
+                                            class="fa fa-clock media-left media-right-margin"></i>
+                                        <div class="media-body">
+                                            <!--<p class="text-uppercase"></p>-->
+                                            <p>Anh Phan Quốc Cường, sinh ngày 16/10/2000 tại Diên Điền, Diên Khánh,
+                                                Khánh Hòa, là một cá nhân nhiệt huyết và đầy đam mê trong việc thúc đẩy
+                                                kỹ năng và sự phát triển cá nhân. Với tinh thần trách nhiệm và tận tâm,
+                                                anh đã dành nhiều năm để xây dựng và phát triển câu lạc bộ kỹ năng "Thắp
+                                                Sáng".
+                                            </p>
+                                            <p id="moreText" style="display: none;">Một dự án mà anh đã sáng lập để chia
+                                                sẻ kiến thức và tạo cơ hội cho các thành viên tham gia phát triển kỹ
+                                                năng và khám phá tiềm năng của họ.
+
+                                                Câu lạc bộ "Thắp Sáng" do Anh Cường chủ nhiệm chuyên tập trung vào đào
+                                                tạo và phát triển các kỹ năng như: Semaphore, Morse, Mật thư, gút
+                                                dây,... và nhiều hoạt động khác liên quan đến kỹ năng sống. Mục tiêu của
+                                                câu lạc bộ là làm cho các bạn trẻ trở thành những người có kiến thức đa
+                                                dạng và kỹ năng phong phú. Tại câu lạc bộ này, mọi người không chỉ được
+                                                học các kỹ năng hiện đại và thú vị mà còn được khám phá khả năng sáng
+                                                tạo của bản thân thông qua các hoạt động thú vị.
+
+                                                Câu lạc bộ "Thắp Sáng" đã thu hút nhiều thành viên đam mê và năng động,
+                                                và đã tạo ra một cộng đồng đầy sự thú vị và hứng thú trong việc học hỏi
+                                                và phát triển. Nơi đây, bạn có cơ hội kết nối, chia sẻ kiến thức và trải
+                                                nghiệm những hoạt động đáng nhớ trong hành trình phát triển cá nhân của
+                                                mình dưới sự hướng dẫn và tạo điều kiện tốt nhất từ Anh Phan Quốc Cường
+                                                và các thành viên khác trong câu lạc bộ.</p>
+
+                                            </p>
+                                            <button id="showMoreBtn">Xem thêm</button>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        // Lấy phần tử button và phần tử nội dung cần ẩn/hiện
+                                        var showMoreBtn = document.getElementById("showMoreBtn");
+                                        var moreText = document.getElementById("moreText");
+
+                                        // Thêm sự kiện click cho nút "Xem thêm"
+                                        showMoreBtn.addEventListener("click", function () {
+                                            if (moreText.style.display === "none") {
+                                                moreText.style.display = "block";
+                                                showMoreBtn.textContent = "Ẩn đi";
+                                            } else {
+                                                moreText.style.display = "none";
+                                                showMoreBtn.textContent = "Xem thêm";
+                                            }
+                                        });
+
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Cảm nhận</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                Thật sự mình rất may mắn khi được là thành viên từ khi mới
+                bắt đầu thành lập câu lạc bộ Thắp Sáng . Bản thân mình rất thích học hỏi ,
+                tìm tòi về những kĩ năng như Morse, Semaphore,… vì nó rất lôi cuốn mình khi
+                mình bắt đầu biết đến nó . 
+                Và may mắn thay , câu lạc bộ Thắp Sáng ra đời và
+                đáp ứng được những nhu cầu học hỏi của mình . Mình học rất nhiều điều từ câu
+                lạc bộ, không chỉ về những bài học liên quan đến kĩ năng mà còn là gắn kết
+                tình yêu thương với mọi người . Câu lạc bộ Thắp Sáng như là 1 ngôi nhà thứ 2
+                của mình, vui có, buồn có và tất cả mọi anh em đều có mặt mỗi khi mình cần .
+                Thật sự rất cảm ơn câu lạc bộ và mình rất tự hào khi được vinh dự là thành
+                viên của câu lạc bộ Thắp Sáng.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Cảm nhận</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                Chúng tôi đến từ nhiều nơi khác nhau, dù đến từ đâu, dưới mái
+                nhà chung mang tên Thắp Sáng, mọi người đều có chung 1 mục tiêu học tập rèn
+                luyện vì sự phát triển của bản thân và của clb. Ở đây mọi người học tập cùng
+                nhau, vui chơi cùng nhau, mọi người đối xử với nhau như "người trong gia
+                đình". Tôi tự hào mình là thành viên trong clb. Thắp Sáng trong tim tôi
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="sectioner-header text-center">
+                <h3>Cảm nhận</h3>
+                <span class="line"></span>
+                <p>Một vài chia sẻ của các thành viên
+                </p>
+            </div>
+            <div class="col-md-12">
+                <div id="testimonial-slider" class="owl-carousel">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p class="description">
+                                
+                                Thật sự mình rất may mắn khi được là thành viên từ khi mới
+                                            bắt đầu thành lập câu lạc bộ Thắp Sáng . Bản thân mình rất thích học hỏi ,
+                                            tìm tòi về những kĩ năng như Morse, Semaphore,… vì nó rất lôi cuốn mình khi
+                                            mình bắt đầu biết đến nó . 
+                                           
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+                                                Xem thêm
+                                              </button>
+                            </p>
+                            
+                            
+                            
+                        </div>
+                        <div class="testimonial-profile">
+                            <div class="pic">
+                                <img style="width: 100px; height: 100px;" src="images/anan.png" alt="">
+                            </div>
+                            <h3 class="title">
+                                Lương Thị Mỹ An
+                                <span class="post">Thành viên</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p class="description">
+                                Khi vào clb em đc học hỏi thêm nhiều kĩ năng, được gặp gỡ
+                                            nhiều anh chị hơn giúp em cởi mở, hòa đồng với mọi người, được đi tham gia
+                                            nhiều trại để thể hiện kĩ năng mà mình được học.
+                            </p>
+                        </div>
+                        <div class="testimonial-profile">
+                            <div class="pic">
+                                <img style="width: 100px; height: 100px;" src="images/ân.png" alt="">
+                            </div>
+                            <h3 class="title">
+                                Nguyễn Trường Ân
+                                <span class="post">Thành viên</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p class="description">
+                                Lúc đó em thấy bất ngờ tại cũng chưa biết gì mà được
+                                            vô CLB, xong đi sinh hoạt thì thấy dzui lắm, có điều hơi tụt mood tại em lên
+                                            đúng giờ thấy có mình em à
+                            </p>
+                        </div>
+                        <div class="testimonial-profile">
+                            <div class="pic">
+                                <img style="width: 100px; height: 100px;" src="images/hùng.png" alt="">
+                            </div>
+                            <h3 class="title">
+                                Huy Hùng
+                                <span class="post">Thành viên</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p class="description">
+                                Chúng tôi đến từ nhiều nơi khác nhau, dù đến từ đâu, dưới mái
+                                            nhà chung mang tên Thắp Sáng, mọi người đều có chung 1 mục tiêu học tập rèn
+                                            luyện vì sự phát triển của bản thân và của clb. 
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter1">
+                                                Xem thêm
+                                              </button>
+                            </p>
+                        </div>
+                        <div class="testimonial-profile">
+                            <div class="pic">
+                                <img style="width: 100px; height: 100px;" src="images/tung.png" alt="">
+                            </div>
+                            <h3 class="title">
+                                Đình Tùng
+                                <span class="post">Thành viên</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p class="description">
+                                Cảm nhận đầu tiên của chị đó là chị thấy yêu clb này.
+                                            Gất gất là vui khi được quen biết anh em mình, chơi chung có chỗ mình chia
+                                            sẻ với nhau những câu chuyện vui
+                                            Giúp chị cởi mở hơn, học kĩ năng, có nhiều cơ hội tham gia trại, cọ xát với
+                                            nhiều người và cuộc sống
+                            </p>
+                        </div>
+                        <div class="testimonial-profile">
+                            <div class="pic">
+                                <img style="width: 100px; height: 100px;" src="images/giang.png" alt="">
+                            </div>
+                            <h3 class="title">
+                                Giang Huỳnh
+                                <span class="post">Thành viên</span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-------Testimonial Start------->
+    <!-- <section class="testimonial section-padding" data-scroll-index='4'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectioner-header text-center white">
+                        <h3>Cảm nhận</h3>
+                        <span class="line"></span>
+                        <p class="white">Một vài chia sẻ của thành viên CLB.</p>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="row">
+                            <div class="offset-md-2 col-md-8 col-sm-12">
+                                
+                                
+
+                                <div class="slider">
+                                    <div class="slider-item">
+                                        <div class="test-img"><img src="/images/anan.png" alt="Placeholder"
+                                                style="width: 138px; height: 138px"></div>
+
+                                        <div class="test-text"><span class="title"><span>Lương Thị Mỹ An</span> Thành
+                                                viên</span>Thật sự mình rất may mắn khi được là thành viên từ khi mới
+                                            bắt đầu thành lập câu lạc bộ Thắp Sáng . Bản thân mình rất thích học hỏi ,
+                                            tìm tòi về những kĩ năng như Morse, Semaphore,… vì nó rất lôi cuốn mình khi
+                                            mình bắt đầu biết đến nó . Và may mắn thay , câu lạc bộ Thắp Sáng ra đời và
+                                            đáp ứng được những nhu cầu học hỏi của mình . Mình học rất nhiều điều từ câu
+                                            lạc bộ, không chỉ về những bài học liên quan đến kĩ năng mà còn là gắn kết
+                                            tình yêu thương với mọi người . Câu lạc bộ Thắp Sáng như là 1 ngôi nhà thứ 2
+                                            của mình, vui có, buồn có và tất cả mọi anh em đều có mặt mỗi khi mình cần .
+                                            Thật sự rất cảm ơn câu lạc bộ và mình rất tự hào khi được vinh dự là thành
+                                            viên của câu lạc bộ Thắp Sáng.</div>
+                                    </div>
+                                    <div class="slider-item">
+                                        <div class="test-img"><img src="/images/ân.png" alt="Placeholder"
+                                                style="width: 138px; height: 138px"></div>
+                                        <div class="test-text"><span class="title"><span>Nguyễn Trường Ân</span> Thành
+                                                viên</span>Khi vào clb em đc học hỏi thêm nhiều kĩ năng, được gặp gỡ
+                                            nhiều anh chị hơn giúp em cởi mở, hòa đồng với mọi người, được đi tham gia
+                                            nhiều trại để thể hiện kĩ năng mà mình được học.</div>
+                                    </div>
+                                    <div class="slider-item">
+                                        <div class="test-img"><img src="/images/hùng.png" alt="Placeholder"
+                                                style="width: 138px; height: 138px"></div>
+                                        <div class="test-text"><span class="title"><span>Trần Hoàng Huy Hùng</span>
+                                                Thành viên</span> Lúc đó em thấy bất ngờ tại cũng chưa biết gì mà được
+                                            vô CLB, xong đi sinh hoạt thì thấy dzui lắm, có điều hơi tụt mood tại em lên
+                                            đúng giờ thấy có mình em à</div>
+                                    </div>
+                                    <div class="slider-item">
+                                        <div class="test-img"><img src="/images/giang.png" alt="Placeholder"
+                                                style="width: 138px; height: 138px"></div>
+                                        <div class="test-text"><span class="title"><span> Giang Huỳnh</span>Thành
+                                                viên</span>Cảm nhận đầu tiên của chị đó là chị thấy yêu clb này.
+                                            Gất gất là vui khi được quen biết anh em mình, chơi chung có chỗ mình chia
+                                            sẻ với nhau những câu chuyện vui
+                                            Giúp chị cởi mở hơn, học kĩ năng, có nhiều cơ hội tham gia trại, cọ xát với
+                                            nhiều người và cuộc sống</div>
+                                    </div>
+                                    <div class="slider-item">
+                                        <div class="test-img"><img src="/images/tung.png" alt="Placeholder"
+                                                style="width: 138px; height: 138px"></div>
+                                        <div class="test-text"><span class="title"><span>Đình Tùng</span>Thành
+                                                viên</span>Chúng tôi đến từ nhiều nơi khác nhau, dù đến từ đâu, dưới mái
+                                            nhà chung mang tên Thắp Sáng, mọi người đều có chung 1 mục tiêu học tập rèn
+                                            luyện vì sự phát triển của bản thân và của clb. Ở đây mọi người học tập cùng
+                                            nhau, vui chơi cùng nhau, mọi người đối xử với nhau như "người trong gia
+                                            đình". Tôi tự hào mình là thành viên trong clb. Thắp Sáng trong tim tôi
+                                        </div>
+                                    </div>
+                                    <div class="slider-item">
+                                        <div class="test-img"><img src="/images/tung.png" alt="Placeholder"
+                                                style="width: 138px; height: 138px"></div>
+                                        <div class="test-text"><span class="title"><span>Đình Tùng</span>Thành
+                                                viên</span>Chúng tôi đến từ nhiều nơi khác nhau, dù đến từ đâu, dưới mái
+                                            nhà chung mang tên Thắp Sáng, mọi người đều có chung 1 mục tiêu học tập rèn
+                                            luyện vì sự phát triển của bản thân và của clb. Ở đây mọi người học tập cùng
+                                            nhau, vui chơi cùng nhau, mọi người đối xử với nhau như "người trong gia
+                                            đình". Tôi tự hào mình là thành viên trong clb. Thắp Sáng trong tim tôi
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+
+    <section class="download section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectioner-header text-center white">
+                        <img style="width: 200px;
+                                                                            height: 50px" src="/images/logo.png"
+                            alt="logo" class="logo-1">
+                        <span class="line"></span>
+                        <p class="white">Sống với đam mê - Cháy cùng nhiệt huyết</p>
+                        <p class="white">Thắp sáng cho tôi - Thắp sáng cho bạn</p>
+                        <p class="white">Và niềm tin thắp sáng Việt Nam</p>
+
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="section-content text-center">
+                        <img src="/img/logo_ts.png" class="img-fluid wow fadeInUp" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-------Download End------->
+
+    <footer class="footer-copy">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>2023 &copy; Applight. Website Designed by <span style="color: red"> Thắp Sáng</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "140429645814710");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v18.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <!-- scrollIt js -->
+    <script src="js/scrollIt.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="assets/vendors/js/glightbox.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#testimonial-slider").owlCarousel({
+                items: 1,
+                itemsDesktop: [1000, 1],
+                itemsDesktopSmall: [990, 1],
+                itemsTablet: [768, 1],
+                itemsMobile: [650, 1],
+                pagination: true,
+                navigation: false,
+                autoPlay: true
+            });
+        });
+    </script>
+
+    <script>
+        wow = new WOW();
+        wow.init();
+        $(document).ready(function (e) {
+
+            $('#video-icon').on('click', function (e) {
+                e.preventDefault();
+                $('.video-popup').css('display', 'flex');
+                $('.iframe-src').slideDown();
+            });
+            $('.video-popup').on('click', function (e) {
+                var $target = e.target.nodeName;
+                var video_src = $(this).find('iframe').attr('src');
+                if ($target != 'IFRAME') {
+                    $('.video-popup').fadeOut();
+                    $('.iframe-src').slideUp();
+                    $('.video-popup iframe').attr('src', " ");
+                    $('.video-popup iframe').attr('src', video_src);
+                }
+            });
+
+            $('.slider').bxSlider({
+                pager: false
+            });
+        });
+
+        $(window).on("scroll", function () {
+
+            var bodyScroll = $(window).scrollTop(),
+                navbar = $(".navbar");
+
+            if (bodyScroll > 50) {
+                $('.navbar-logo img').attr('src', '/images/logo-black.png');
+                navbar.addClass("nav-scroll");
+
+            } else {
+                $('.navbar-logo img').attr('src', '/images/logo.png');
+                navbar.removeClass("nav-scroll");
+            }
+
+        });
+        $(window).on("load", function () {
+            var bodyScroll = $(window).scrollTop(),
+                navbar = $(".navbar");
+
+            if (bodyScroll > 50) {
+                $('.navbar-logo img').attr('src', '/images/logo-black.png');
+                navbar.addClass("nav-scroll");
+            } else {
+                $('.navbar-logo img').attr('src', '/images/logo-white.png');
+                navbar.removeClass("nav-scroll");
+            }
+
+            $.scrollIt({
+
+                easing: 'swing', // the easing function for animation
+                scrollTime: 900, // how long (in ms) the animation takes
+                activeClass: 'active', // class given to the active nav element
+                onPageChange: null, // function(pageIndex) that is called when page is changed
+                topOffset: -63
+            });
+        });
+
+    </script>
+</body>
+
+</html>
